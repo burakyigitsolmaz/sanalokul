@@ -1,0 +1,2 @@
+# Ayar dosyalarına (veritabanı şifresi dahil) doğrudan web erişimi kapalı.
+Require all denied

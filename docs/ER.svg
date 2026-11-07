@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1850" height="1560" viewBox="0 0 1850 1560" font-family="Segoe UI, Arial, sans-serif">
+<defs>
+<marker id="ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+<filter id="golge" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/></filter>
+</defs>
+<rect width="1850" height="1560" fill="#ffffff"/>
+<text x="40" y="52" font-size="26" font-weight="700" fill="#0f172a">Nallıhan MYO Sanal Okul — Entity-Relationship Diyagramı</text>
+<text x="40" y="82" font-size="14" fill="#64748b">Ankara Üniversitesi Nallıhan MYO · Bilgisayar Programcılığı · Veritabanı: sanalokul (utf8mb4)</text>
+<g fill="none" stroke="#64748b" stroke-width="1.5" opacity="0.9">
+<path d="M 370.0 174.0 C 410.0 174.0, 360.0 284.0, 400.0 284.0" marker-end="url(#ok)"/>
+<path d="M 370.0 299.0 C 410.0 299.0, 360.0 530.0, 400.0 530.0" marker-end="url(#ok)"/>
+<path d="M 370.0 299.0 C 410.0 299.0, 360.0 677.0, 400.0 677.0" marker-end="url(#ok)"/>
+<path d="M 370.0 299.0 C 545.5 299.0, 584.5 240.0, 760.0 240.0" marker-end="url(#ok)"/>
+<path d="M 565.0 438.0 C 605.0 438.0, 525.0 464.0, 565.0 464.0" marker-end="url(#ok)"/>
+<path d="M 565.0 438.0 C 605.0 438.0, 525.0 622.0, 565.0 622.0" marker-end="url(#ok)"/>
+<path d="M 730.0 284.0 C 770.0 284.0, 720.0 464.0, 760.0 464.0" marker-end="url(#ok)"/>
+<path d="M 730.0 284.0 C 770.0 284.0, 720.0 655.0, 760.0 655.0" marker-end="url(#ok)"/>
+<path d="M 730.0 284.0 C 905.5 284.0, 944.5 644.0, 1120.0 644.0" marker-end="url(#ok)"/>
+<path d="M 730.0 284.0 C 1067.5 284.0, 1142.5 240.0, 1480.0 240.0" marker-end="url(#ok)"/>
+<path d="M 730.0 284.0 C 1067.5 284.0, 1142.5 475.0, 1480.0 475.0" marker-end="url(#ok)"/>
+<path d="M 370.0 457.0 C 545.5 457.0, 584.5 464.0, 760.0 464.0" marker-end="url(#ok)"/>
+<path d="M 925.0 350.0 C 965.0 350.0, 885.0 376.0, 925.0 376.0" marker-end="url(#ok)"/>
+<path d="M 925.0 552.0 C 965.0 552.0, 885.0 578.0, 925.0 578.0" marker-end="url(#ok)"/>
+<path d="M 1090.0 464.0 C 1130.0 464.0, 1080.0 218.0, 1120.0 218.0" marker-end="url(#ok)"/>
+<path d="M 1090.0 464.0 C 1130.0 464.0, 1080.0 420.0, 1120.0 420.0" marker-end="url(#ok)"/>
+<path d="M 1090.0 464.0 C 1130.0 464.0, 1080.0 644.0, 1120.0 644.0" marker-end="url(#ok)"/>
+<path d="M 1090.0 464.0 C 1130.0 464.0, 1080.0 879.0, 1120.0 879.0" marker-end="url(#ok)"/>
+<path d="M 925.0 732.0 C 965.0 732.0, 885.0 758.0, 925.0 758.0" marker-end="url(#ok)"/>
+<path d="M 1450.0 879.0 C 1490.0 879.0, 1440.0 240.0, 1480.0 240.0" marker-end="url(#ok)"/>
+</g>
+<g filter="url(#golge)"><rect x="40" y="130" width="330" height="88" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 40 164 V 139 Q 40 130 49 130 H 361 Q 370 130 370 139 V 164 Z" fill="#2563eb"/>
+<text x="54" y="153" font-size="14.5" font-weight="700" fill="#ffffff">roller</text>
+<rect x="52" y="178" width="22" height="14" rx="3" fill="#f59e0b"/><text x="63" y="188.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="78" y="189" font-size="12.2" fill="#1e293b">id</text>
+<text x="358" y="189" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<rect x="41" y="196" width="328" height="22" fill="#f8fafc"/>
+<text x="52" y="211" font-size="12.2" fill="#1e293b">ad</text>
+<text x="358" y="211" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(20)  · UQ</text>
+<g filter="url(#golge)"><rect x="40" y="244" width="330" height="110" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 40 278 V 253 Q 40 244 49 244 H 361 Q 370 244 370 253 V 278 Z" fill="#2563eb"/>
+<text x="54" y="267" font-size="14.5" font-weight="700" fill="#ffffff">bolumler</text>
+<rect x="52" y="292" width="22" height="14" rx="3" fill="#f59e0b"/><text x="63" y="302.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="78" y="303" font-size="12.2" fill="#1e293b">id</text>
+<text x="358" y="303" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<rect x="41" y="310" width="328" height="22" fill="#f8fafc"/>
+<text x="52" y="325" font-size="12.2" fill="#1e293b">kod</text>
+<text x="358" y="325" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(12)  · UQ</text>
+<text x="52" y="347" font-size="12.2" fill="#1e293b">ad</text>
+<text x="358" y="347" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(120)</text>
+<g filter="url(#golge)"><rect x="40" y="380" width="330" height="154" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 40 414 V 389 Q 40 380 49 380 H 361 Q 370 380 370 389 V 414 Z" fill="#2563eb"/>
+<text x="54" y="403" font-size="14.5" font-weight="700" fill="#ffffff">donemler</text>
+<rect x="52" y="428" width="22" height="14" rx="3" fill="#f59e0b"/><text x="63" y="438.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="78" y="439" font-size="12.2" fill="#1e293b">id</text>
+<text x="358" y="439" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<rect x="41" y="446" width="328" height="22" fill="#f8fafc"/>
+<text x="52" y="461" font-size="12.2" fill="#1e293b">ad</text>
+<text x="358" y="461" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(40)  · UQ</text>
+<text x="52" y="483" font-size="12.2" fill="#1e293b">baslangic</text>
+<text x="358" y="483" font-size="10.3" fill="#94a3b8" text-anchor="end">DATE</text>
+<rect x="41" y="490" width="328" height="22" fill="#f8fafc"/>
+<text x="52" y="505" font-size="12.2" fill="#1e293b">bitis</text>
+<text x="358" y="505" font-size="10.3" fill="#94a3b8" text-anchor="end">DATE</text>
+<text x="52" y="527" font-size="12.2" fill="#1e293b">aktif</text>
+<text x="358" y="527" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT(1)</text>
+<g filter="url(#golge)"><rect x="400" y="130" width="330" height="308" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 400 164 V 139 Q 400 130 409 130 H 721 Q 730 130 730 139 V 164 Z" fill="#2563eb"/>
+<text x="414" y="153" font-size="14.5" font-weight="700" fill="#ffffff">kullanicilar</text>
+<rect x="412" y="178" width="22" height="14" rx="3" fill="#f59e0b"/><text x="423" y="188.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="438" y="189" font-size="12.2" fill="#1e293b">id</text>
+<text x="718" y="189" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="401" y="196" width="328" height="22" fill="#f8fafc"/>
+<rect x="412" y="200" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="423" y="210.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="438" y="211" font-size="12.2" fill="#1e293b">rol_id</text>
+<text x="718" y="211" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<text x="412" y="233" font-size="12.2" fill="#1e293b">numara</text>
+<text x="718" y="233" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(20)  · UQ</text>
+<rect x="401" y="240" width="328" height="22" fill="#f8fafc"/>
+<text x="412" y="255" font-size="12.2" fill="#1e293b">ad</text>
+<text x="718" y="255" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(60)</text>
+<text x="412" y="277" font-size="12.2" fill="#1e293b">soyad</text>
+<text x="718" y="277" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(60)</text>
+<rect x="401" y="284" width="328" height="22" fill="#f8fafc"/>
+<text x="412" y="299" font-size="12.2" fill="#1e293b">eposta</text>
+<text x="718" y="299" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(120)  · UQ</text>
+<text x="412" y="321" font-size="12.2" fill="#1e293b">sifre_hash</text>
+<text x="718" y="321" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(255)</text>
+<rect x="401" y="328" width="328" height="22" fill="#f8fafc"/>
+<text x="412" y="343" font-size="12.2" fill="#1e293b">telefon</text>
+<text x="718" y="343" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(20)</text>
+<text x="412" y="365" font-size="12.2" fill="#1e293b">tema_tercihi</text>
+<text x="718" y="365" font-size="10.3" fill="#94a3b8" text-anchor="end">ENUM</text>
+<rect x="401" y="372" width="328" height="22" fill="#f8fafc"/>
+<text x="412" y="387" font-size="12.2" fill="#1e293b">aktif</text>
+<text x="718" y="387" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT(1)</text>
+<text x="412" y="409" font-size="12.2" fill="#1e293b">son_giris</text>
+<text x="718" y="409" font-size="10.3" fill="#94a3b8" text-anchor="end">DATETIME</text>
+<rect x="401" y="416" width="328" height="22" fill="#f8fafc"/>
+<text x="412" y="431" font-size="12.2" fill="#1e293b">olusturma_zamani</text>
+<text x="718" y="431" font-size="10.3" fill="#94a3b8" text-anchor="end">TIMESTAMP</text>
+<g filter="url(#golge)"><rect x="400" y="464" width="330" height="132" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 400 498 V 473 Q 400 464 409 464 H 721 Q 730 464 730 473 V 498 Z" fill="#2563eb"/>
+<text x="414" y="487" font-size="14.5" font-weight="700" fill="#ffffff">ogrenci_profilleri</text>
+<rect x="412" y="512" width="22" height="14" rx="3" fill="#f59e0b"/><text x="423" y="522.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<rect x="438" y="512" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="449" y="522.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="464" y="523" font-size="12.2" fill="#1e293b">kullanici_id</text>
+<text x="718" y="523" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="401" y="530" width="328" height="22" fill="#f8fafc"/>
+<rect x="412" y="534" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="423" y="544.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="438" y="545" font-size="12.2" fill="#1e293b">bolum_id</text>
+<text x="718" y="545" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<text x="412" y="567" font-size="12.2" fill="#1e293b">sinif</text>
+<text x="718" y="567" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<rect x="401" y="574" width="328" height="22" fill="#f8fafc"/>
+<text x="412" y="589" font-size="12.2" fill="#1e293b">giris_yili</text>
+<text x="718" y="589" font-size="10.3" fill="#94a3b8" text-anchor="end">SMALLINT</text>
+<g filter="url(#golge)"><rect x="400" y="622" width="330" height="110" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 400 656 V 631 Q 400 622 409 622 H 721 Q 730 622 730 631 V 656 Z" fill="#2563eb"/>
+<text x="414" y="645" font-size="14.5" font-weight="700" fill="#ffffff">ogretim_elemani_profilleri</text>
+<rect x="412" y="670" width="22" height="14" rx="3" fill="#f59e0b"/><text x="423" y="680.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<rect x="438" y="670" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="449" y="680.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="464" y="681" font-size="12.2" fill="#1e293b">kullanici_id</text>
+<text x="718" y="681" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="401" y="688" width="328" height="22" fill="#f8fafc"/>
+<rect x="412" y="692" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="423" y="702.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="438" y="703" font-size="12.2" fill="#1e293b">bolum_id</text>
+<text x="718" y="703" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<text x="412" y="725" font-size="12.2" fill="#1e293b">unvan</text>
+<text x="718" y="725" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(60)</text>
+<g filter="url(#golge)"><rect x="760" y="130" width="330" height="220" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 760 164 V 139 Q 760 130 769 130 H 1081 Q 1090 130 1090 139 V 164 Z" fill="#059669"/>
+<text x="774" y="153" font-size="14.5" font-weight="700" fill="#ffffff">dersler</text>
+<rect x="772" y="178" width="22" height="14" rx="3" fill="#f59e0b"/><text x="783" y="188.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="798" y="189" font-size="12.2" fill="#1e293b">id</text>
+<text x="1078" y="189" font-size="10.3" fill="#94a3b8" text-anchor="end">SMALLINT</text>
+<rect x="761" y="196" width="328" height="22" fill="#f8fafc"/>
+<rect x="772" y="200" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="783" y="210.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="798" y="211" font-size="12.2" fill="#1e293b">bolum_id</text>
+<text x="1078" y="211" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<text x="772" y="233" font-size="12.2" fill="#1e293b">kod</text>
+<text x="1078" y="233" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(12)  · UQ</text>
+<rect x="761" y="240" width="328" height="22" fill="#f8fafc"/>
+<text x="772" y="255" font-size="12.2" fill="#1e293b">ad</text>
+<text x="1078" y="255" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(140)</text>
+<text x="772" y="277" font-size="12.2" fill="#1e293b">kredi</text>
+<text x="1078" y="277" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<rect x="761" y="284" width="328" height="22" fill="#f8fafc"/>
+<text x="772" y="299" font-size="12.2" fill="#1e293b">akts</text>
+<text x="1078" y="299" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<text x="772" y="321" font-size="12.2" fill="#1e293b">zorunlu_mu</text>
+<text x="1078" y="321" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT(1)</text>
+<rect x="761" y="328" width="328" height="22" fill="#f8fafc"/>
+<text x="772" y="343" font-size="12.2" fill="#1e293b">sinif</text>
+<text x="1078" y="343" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<g filter="url(#golge)"><rect x="760" y="376" width="330" height="176" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 760 410 V 385 Q 760 376 769 376 H 1081 Q 1090 376 1090 385 V 410 Z" fill="#059669"/>
+<text x="774" y="399" font-size="14.5" font-weight="700" fill="#ffffff">ders_acilislari</text>
+<rect x="772" y="424" width="22" height="14" rx="3" fill="#f59e0b"/><text x="783" y="434.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="798" y="435" font-size="12.2" fill="#1e293b">id</text>
+<text x="1078" y="435" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="761" y="442" width="328" height="22" fill="#f8fafc"/>
+<rect x="772" y="446" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="783" y="456.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="798" y="457" font-size="12.2" fill="#1e293b">ders_id</text>
+<text x="1078" y="457" font-size="10.3" fill="#94a3b8" text-anchor="end">SMALLINT</text>
+<rect x="772" y="468" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="783" y="478.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="798" y="479" font-size="12.2" fill="#1e293b">donem_id</text>
+<text x="1078" y="479" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<rect x="761" y="486" width="328" height="22" fill="#f8fafc"/>
+<rect x="772" y="490" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="783" y="500.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="798" y="501" font-size="12.2" fill="#1e293b">ogretim_elemani_id</text>
+<text x="1078" y="501" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<text x="772" y="523" font-size="12.2" fill="#1e293b">sube</text>
+<text x="1078" y="523" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(5)</text>
+<rect x="761" y="530" width="328" height="22" fill="#f8fafc"/>
+<text x="772" y="545" font-size="12.2" fill="#1e293b">kontenjan</text>
+<text x="1078" y="545" font-size="10.3" fill="#94a3b8" text-anchor="end">SMALLINT</text>
+<g filter="url(#golge)"><rect x="760" y="578" width="330" height="154" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 760 612 V 587 Q 760 578 769 578 H 1081 Q 1090 578 1090 587 V 612 Z" fill="#059669"/>
+<text x="774" y="601" font-size="14.5" font-weight="700" fill="#ffffff">ders_kayitlari</text>
+<rect x="772" y="626" width="22" height="14" rx="3" fill="#f59e0b"/><text x="783" y="636.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="798" y="637" font-size="12.2" fill="#1e293b">id</text>
+<text x="1078" y="637" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="761" y="644" width="328" height="22" fill="#f8fafc"/>
+<rect x="772" y="648" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="783" y="658.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="798" y="659" font-size="12.2" fill="#1e293b">ogrenci_id</text>
+<text x="1078" y="659" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="772" y="670" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="783" y="680.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="798" y="681" font-size="12.2" fill="#1e293b">ders_acilis_id</text>
+<text x="1078" y="681" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="761" y="688" width="328" height="22" fill="#f8fafc"/>
+<text x="772" y="703" font-size="12.2" fill="#1e293b">kayit_zamani</text>
+<text x="1078" y="703" font-size="10.3" fill="#94a3b8" text-anchor="end">TIMESTAMP</text>
+<text x="772" y="725" font-size="12.2" fill="#1e293b">durum</text>
+<text x="1078" y="725" font-size="10.3" fill="#94a3b8" text-anchor="end">ENUM</text>
+<g filter="url(#golge)"><rect x="760" y="758" width="330" height="198" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 760 792 V 767 Q 760 758 769 758 H 1081 Q 1090 758 1090 767 V 792 Z" fill="#059669"/>
+<text x="774" y="781" font-size="14.5" font-weight="700" fill="#ffffff">notlar</text>
+<rect x="772" y="806" width="22" height="14" rx="3" fill="#f59e0b"/><text x="783" y="816.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="798" y="817" font-size="12.2" fill="#1e293b">id</text>
+<text x="1078" y="817" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="761" y="824" width="328" height="22" fill="#f8fafc"/>
+<rect x="772" y="828" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="783" y="838.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="798" y="839" font-size="12.2" fill="#1e293b">ders_kaydi_id</text>
+<text x="1078" y="839" font-size="10.3" fill="#94a3b8" text-anchor="end">INT  · UQ</text>
+<text x="772" y="861" font-size="12.2" fill="#1e293b">vize</text>
+<text x="1078" y="861" font-size="10.3" fill="#94a3b8" text-anchor="end">DECIMAL(5,2)</text>
+<rect x="761" y="868" width="328" height="22" fill="#f8fafc"/>
+<text x="772" y="883" font-size="12.2" fill="#1e293b">final</text>
+<text x="1078" y="883" font-size="10.3" fill="#94a3b8" text-anchor="end">DECIMAL(5,2)</text>
+<text x="772" y="905" font-size="12.2" fill="#1e293b">ortalama</text>
+<text x="1078" y="905" font-size="10.3" fill="#94a3b8" text-anchor="end">otomatik</text>
+<rect x="761" y="912" width="328" height="22" fill="#f8fafc"/>
+<text x="772" y="927" font-size="12.2" fill="#1e293b">harf_notu</text>
+<text x="1078" y="927" font-size="10.3" fill="#94a3b8" text-anchor="end">otomatik</text>
+<text x="772" y="949" font-size="12.2" fill="#1e293b">guncelleme_zamani</text>
+<text x="1078" y="949" font-size="10.3" fill="#94a3b8" text-anchor="end">TIMESTAMP</text>
+<g filter="url(#golge)"><rect x="1120" y="130" width="330" height="176" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 1120 164 V 139 Q 1120 130 1129 130 H 1441 Q 1450 130 1450 139 V 164 Z" fill="#d97706"/>
+<text x="1134" y="153" font-size="14.5" font-weight="700" fill="#ffffff">ders_programi</text>
+<rect x="1132" y="178" width="22" height="14" rx="3" fill="#f59e0b"/><text x="1143" y="188.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="1158" y="189" font-size="12.2" fill="#1e293b">id</text>
+<text x="1438" y="189" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1121" y="196" width="328" height="22" fill="#f8fafc"/>
+<rect x="1132" y="200" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="1143" y="210.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="1158" y="211" font-size="12.2" fill="#1e293b">ders_acilis_id</text>
+<text x="1438" y="211" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<text x="1132" y="233" font-size="12.2" fill="#1e293b">gun</text>
+<text x="1438" y="233" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<rect x="1121" y="240" width="328" height="22" fill="#f8fafc"/>
+<text x="1132" y="255" font-size="12.2" fill="#1e293b">baslangic_saati</text>
+<text x="1438" y="255" font-size="10.3" fill="#94a3b8" text-anchor="end">TIME</text>
+<text x="1132" y="277" font-size="12.2" fill="#1e293b">bitis_saati</text>
+<text x="1438" y="277" font-size="10.3" fill="#94a3b8" text-anchor="end">TIME</text>
+<rect x="1121" y="284" width="328" height="22" fill="#f8fafc"/>
+<text x="1132" y="299" font-size="12.2" fill="#1e293b">derslik</text>
+<text x="1438" y="299" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(40)</text>
+<g filter="url(#golge)"><rect x="1120" y="332" width="330" height="176" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 1120 366 V 341 Q 1120 332 1129 332 H 1441 Q 1450 332 1450 341 V 366 Z" fill="#d97706"/>
+<text x="1134" y="355" font-size="14.5" font-weight="700" fill="#ffffff">ders_icerikleri</text>
+<rect x="1132" y="380" width="22" height="14" rx="3" fill="#f59e0b"/><text x="1143" y="390.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="1158" y="391" font-size="12.2" fill="#1e293b">id</text>
+<text x="1438" y="391" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1121" y="398" width="328" height="22" fill="#f8fafc"/>
+<rect x="1132" y="402" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="1143" y="412.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="1158" y="413" font-size="12.2" fill="#1e293b">ders_acilis_id</text>
+<text x="1438" y="413" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<text x="1132" y="435" font-size="12.2" fill="#1e293b">hafta</text>
+<text x="1438" y="435" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT</text>
+<rect x="1121" y="442" width="328" height="22" fill="#f8fafc"/>
+<text x="1132" y="457" font-size="12.2" fill="#1e293b">baslik</text>
+<text x="1438" y="457" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(160)</text>
+<text x="1132" y="479" font-size="12.2" fill="#1e293b">aciklama</text>
+<text x="1438" y="479" font-size="10.3" fill="#94a3b8" text-anchor="end">TEXT</text>
+<rect x="1121" y="486" width="328" height="22" fill="#f8fafc"/>
+<text x="1132" y="501" font-size="12.2" fill="#1e293b">dosya_yolu</text>
+<text x="1438" y="501" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(255)</text>
+<g filter="url(#golge)"><rect x="1120" y="534" width="330" height="220" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 1120 568 V 543 Q 1120 534 1129 534 H 1441 Q 1450 534 1450 543 V 568 Z" fill="#d97706"/>
+<text x="1134" y="557" font-size="14.5" font-weight="700" fill="#ffffff">duyurular</text>
+<rect x="1132" y="582" width="22" height="14" rx="3" fill="#f59e0b"/><text x="1143" y="592.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="1158" y="593" font-size="12.2" fill="#1e293b">id</text>
+<text x="1438" y="593" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1121" y="600" width="328" height="22" fill="#f8fafc"/>
+<rect x="1132" y="604" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="1143" y="614.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="1158" y="615" font-size="12.2" fill="#1e293b">ders_acilis_id</text>
+<text x="1438" y="615" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1132" y="626" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="1143" y="636.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="1158" y="637" font-size="12.2" fill="#1e293b">yazar_id</text>
+<text x="1438" y="637" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1121" y="644" width="328" height="22" fill="#f8fafc"/>
+<text x="1132" y="659" font-size="12.2" fill="#1e293b">baslik</text>
+<text x="1438" y="659" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(160)</text>
+<text x="1132" y="681" font-size="12.2" fill="#1e293b">icerik</text>
+<text x="1438" y="681" font-size="10.3" fill="#94a3b8" text-anchor="end">TEXT</text>
+<rect x="1121" y="688" width="328" height="22" fill="#f8fafc"/>
+<text x="1132" y="703" font-size="12.2" fill="#1e293b">onemli</text>
+<text x="1438" y="703" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT(1)</text>
+<text x="1132" y="725" font-size="12.2" fill="#1e293b">yayin_tarihi</text>
+<text x="1438" y="725" font-size="10.3" fill="#94a3b8" text-anchor="end">DATETIME</text>
+<rect x="1121" y="732" width="328" height="22" fill="#f8fafc"/>
+<text x="1132" y="747" font-size="12.2" fill="#1e293b">bitis_tarihi</text>
+<text x="1438" y="747" font-size="10.3" fill="#94a3b8" text-anchor="end">DATETIME</text>
+<g filter="url(#golge)"><rect x="1120" y="780" width="330" height="198" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 1120 814 V 789 Q 1120 780 1129 780 H 1441 Q 1450 780 1450 789 V 814 Z" fill="#d97706"/>
+<text x="1134" y="803" font-size="14.5" font-weight="700" fill="#ffffff">odevler</text>
+<rect x="1132" y="828" width="22" height="14" rx="3" fill="#f59e0b"/><text x="1143" y="838.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="1158" y="839" font-size="12.2" fill="#1e293b">id</text>
+<text x="1438" y="839" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1121" y="846" width="328" height="22" fill="#f8fafc"/>
+<rect x="1132" y="850" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="1143" y="860.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="1158" y="861" font-size="12.2" fill="#1e293b">ders_acilis_id</text>
+<text x="1438" y="861" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<text x="1132" y="883" font-size="12.2" fill="#1e293b">baslik</text>
+<text x="1438" y="883" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(160)</text>
+<rect x="1121" y="890" width="328" height="22" fill="#f8fafc"/>
+<text x="1132" y="905" font-size="12.2" fill="#1e293b">aciklama</text>
+<text x="1438" y="905" font-size="10.3" fill="#94a3b8" text-anchor="end">TEXT</text>
+<text x="1132" y="927" font-size="12.2" fill="#1e293b">son_teslim</text>
+<text x="1438" y="927" font-size="10.3" fill="#94a3b8" text-anchor="end">DATETIME</text>
+<rect x="1121" y="934" width="328" height="22" fill="#f8fafc"/>
+<text x="1132" y="949" font-size="12.2" fill="#1e293b">maks_puan</text>
+<text x="1438" y="949" font-size="10.3" fill="#94a3b8" text-anchor="end">SMALLINT</text>
+<text x="1132" y="971" font-size="12.2" fill="#1e293b">dosya_yolu</text>
+<text x="1438" y="971" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(255)</text>
+<g filter="url(#golge)"><rect x="1480" y="130" width="330" height="220" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 1480 164 V 139 Q 1480 130 1489 130 H 1801 Q 1810 130 1810 139 V 164 Z" fill="#d97706"/>
+<text x="1494" y="153" font-size="14.5" font-weight="700" fill="#ffffff">teslimler</text>
+<rect x="1492" y="178" width="22" height="14" rx="3" fill="#f59e0b"/><text x="1503" y="188.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="1518" y="189" font-size="12.2" fill="#1e293b">id</text>
+<text x="1798" y="189" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1481" y="196" width="328" height="22" fill="#f8fafc"/>
+<rect x="1492" y="200" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="1503" y="210.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="1518" y="211" font-size="12.2" fill="#1e293b">odev_id</text>
+<text x="1798" y="211" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1492" y="222" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="1503" y="232.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="1518" y="233" font-size="12.2" fill="#1e293b">ogrenci_id</text>
+<text x="1798" y="233" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1481" y="240" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="255" font-size="12.2" fill="#1e293b">dosya_yolu</text>
+<text x="1798" y="255" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(255)</text>
+<text x="1492" y="277" font-size="12.2" fill="#1e293b">aciklama</text>
+<text x="1798" y="277" font-size="10.3" fill="#94a3b8" text-anchor="end">TEXT</text>
+<rect x="1481" y="284" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="299" font-size="12.2" fill="#1e293b">teslim_zamani</text>
+<text x="1798" y="299" font-size="10.3" fill="#94a3b8" text-anchor="end">DATETIME</text>
+<text x="1492" y="321" font-size="12.2" fill="#1e293b">puan</text>
+<text x="1798" y="321" font-size="10.3" fill="#94a3b8" text-anchor="end">SMALLINT</text>
+<rect x="1481" y="328" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="343" font-size="12.2" fill="#1e293b">geri_bildirim</text>
+<text x="1798" y="343" font-size="10.3" fill="#94a3b8" text-anchor="end">TEXT</text>
+<g filter="url(#golge)"><rect x="1480" y="376" width="330" height="198" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 1480 410 V 385 Q 1480 376 1489 376 H 1801 Q 1810 376 1810 385 V 410 Z" fill="#7c3aed"/>
+<text x="1494" y="399" font-size="14.5" font-weight="700" fill="#ffffff">islem_loglari</text>
+<rect x="1492" y="424" width="22" height="14" rx="3" fill="#f59e0b"/><text x="1503" y="434.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="1518" y="435" font-size="12.2" fill="#1e293b">id</text>
+<text x="1798" y="435" font-size="10.3" fill="#94a3b8" text-anchor="end">BIGINT</text>
+<rect x="1481" y="442" width="328" height="22" fill="#f8fafc"/>
+<rect x="1492" y="446" width="22" height="14" rx="3" fill="#0ea5e9"/><text x="1503" y="456.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="1518" y="457" font-size="12.2" fill="#1e293b">kullanici_id</text>
+<text x="1798" y="457" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<text x="1492" y="479" font-size="12.2" fill="#1e293b">islem</text>
+<text x="1798" y="479" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(255)</text>
+<rect x="1481" y="486" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="501" font-size="12.2" fill="#1e293b">tablo_adi</text>
+<text x="1798" y="501" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(60)</text>
+<text x="1492" y="523" font-size="12.2" fill="#1e293b">kayit_id</text>
+<text x="1798" y="523" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1481" y="530" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="545" font-size="12.2" fill="#1e293b">ip</text>
+<text x="1798" y="545" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(45)</text>
+<text x="1492" y="567" font-size="12.2" fill="#1e293b">zaman</text>
+<text x="1798" y="567" font-size="10.3" fill="#94a3b8" text-anchor="end">TIMESTAMP</text>
+<g filter="url(#golge)"><rect x="1480" y="600" width="330" height="154" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 1480 634 V 609 Q 1480 600 1489 600 H 1801 Q 1810 600 1810 609 V 634 Z" fill="#7c3aed"/>
+<text x="1494" y="623" font-size="14.5" font-weight="700" fill="#ffffff">giris_denemeleri</text>
+<rect x="1492" y="648" width="22" height="14" rx="3" fill="#f59e0b"/><text x="1503" y="658.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="1518" y="659" font-size="12.2" fill="#1e293b">id</text>
+<text x="1798" y="659" font-size="10.3" fill="#94a3b8" text-anchor="end">BIGINT</text>
+<rect x="1481" y="666" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="681" font-size="12.2" fill="#1e293b">eposta</text>
+<text x="1798" y="681" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(120)</text>
+<text x="1492" y="703" font-size="12.2" fill="#1e293b">ip</text>
+<text x="1798" y="703" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(45)</text>
+<rect x="1481" y="710" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="725" font-size="12.2" fill="#1e293b">basarili</text>
+<text x="1798" y="725" font-size="10.3" fill="#94a3b8" text-anchor="end">TINYINT(1)</text>
+<text x="1492" y="747" font-size="12.2" fill="#1e293b">zaman</text>
+<text x="1798" y="747" font-size="10.3" fill="#94a3b8" text-anchor="end">TIMESTAMP</text>
+<g filter="url(#golge)"><rect x="1480" y="780" width="330" height="220" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 1480 814 V 789 Q 1480 780 1489 780 H 1801 Q 1810 780 1810 789 V 814 Z" fill="#0891b2"/>
+<text x="1494" y="803" font-size="14.5" font-weight="700" fill="#ffffff">yemek_menuleri</text>
+<rect x="1492" y="828" width="22" height="14" rx="3" fill="#f59e0b"/><text x="1503" y="838.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="1518" y="839" font-size="12.2" fill="#1e293b">id</text>
+<text x="1798" y="839" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1481" y="846" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="861" font-size="12.2" fill="#1e293b">tarih</text>
+<text x="1798" y="861" font-size="10.3" fill="#94a3b8" text-anchor="end">DATE  · UQ</text>
+<text x="1492" y="883" font-size="12.2" fill="#1e293b">corba</text>
+<text x="1798" y="883" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(120)</text>
+<rect x="1481" y="890" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="905" font-size="12.2" fill="#1e293b">ana_yemek</text>
+<text x="1798" y="905" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(120)</text>
+<text x="1492" y="927" font-size="12.2" fill="#1e293b">yardimci_yemek</text>
+<text x="1798" y="927" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(120)</text>
+<rect x="1481" y="934" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="949" font-size="12.2" fill="#1e293b">tatli_salata</text>
+<text x="1798" y="949" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(120)</text>
+<text x="1492" y="971" font-size="12.2" fill="#1e293b">toplam_kcal</text>
+<text x="1798" y="971" font-size="10.3" fill="#94a3b8" text-anchor="end">SMALLINT</text>
+<rect x="1481" y="978" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="993" font-size="12.2" fill="#1e293b">kaynak_url</text>
+<text x="1798" y="993" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(500)</text>
+<g filter="url(#golge)"><rect x="1480" y="1026" width="330" height="198" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 1480 1060 V 1035 Q 1480 1026 1489 1026 H 1801 Q 1810 1026 1810 1035 V 1060 Z" fill="#0891b2"/>
+<text x="1494" y="1049" font-size="14.5" font-weight="700" fill="#ffffff">dis_haberler</text>
+<rect x="1492" y="1074" width="22" height="14" rx="3" fill="#f59e0b"/><text x="1503" y="1084.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="1518" y="1085" font-size="12.2" fill="#1e293b">id</text>
+<text x="1798" y="1085" font-size="10.3" fill="#94a3b8" text-anchor="end">INT</text>
+<rect x="1481" y="1092" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="1107" font-size="12.2" fill="#1e293b">kaynak</text>
+<text x="1798" y="1107" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(60)</text>
+<text x="1492" y="1129" font-size="12.2" fill="#1e293b">baslik</text>
+<text x="1798" y="1129" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(255)</text>
+<rect x="1481" y="1136" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="1151" font-size="12.2" fill="#1e293b">ozet</text>
+<text x="1798" y="1151" font-size="10.3" fill="#94a3b8" text-anchor="end">TEXT</text>
+<text x="1492" y="1173" font-size="12.2" fill="#1e293b">url</text>
+<text x="1798" y="1173" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(500)  · UQ</text>
+<rect x="1481" y="1180" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="1195" font-size="12.2" fill="#1e293b">gorsel_url</text>
+<text x="1798" y="1195" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(500)</text>
+<text x="1492" y="1217" font-size="12.2" fill="#1e293b">yayin_tarihi</text>
+<text x="1798" y="1217" font-size="10.3" fill="#94a3b8" text-anchor="end">DATETIME</text>
+<g filter="url(#golge)"><rect x="1480" y="1250" width="330" height="154" rx="9" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M 1480 1284 V 1259 Q 1480 1250 1489 1250 H 1801 Q 1810 1250 1810 1259 V 1284 Z" fill="#0891b2"/>
+<text x="1494" y="1273" font-size="14.5" font-weight="700" fill="#ffffff">kaynak_senkron_durumu</text>
+<rect x="1492" y="1298" width="22" height="14" rx="3" fill="#f59e0b"/><text x="1503" y="1308.6" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="1518" y="1309" font-size="12.2" fill="#1e293b">kaynak</text>
+<text x="1798" y="1309" font-size="10.3" fill="#94a3b8" text-anchor="end">VARCHAR(60)</text>
+<rect x="1481" y="1316" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="1331" font-size="12.2" fill="#1e293b">son_deneme</text>
+<text x="1798" y="1331" font-size="10.3" fill="#94a3b8" text-anchor="end">DATETIME</text>
+<text x="1492" y="1353" font-size="12.2" fill="#1e293b">son_basari</text>
+<text x="1798" y="1353" font-size="10.3" fill="#94a3b8" text-anchor="end">DATETIME</text>
+<rect x="1481" y="1360" width="328" height="22" fill="#f8fafc"/>
+<text x="1492" y="1375" font-size="12.2" fill="#1e293b">durum</text>
+<text x="1798" y="1375" font-size="10.3" fill="#94a3b8" text-anchor="end">ENUM</text>
+<text x="1492" y="1397" font-size="12.2" fill="#1e293b">hata_mesaji</text>
+<text x="1798" y="1397" font-size="10.3" fill="#94a3b8" text-anchor="end">TEXT</text>
+<rect x="40" y="1460" width="1770" height="66" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="60" y="1480" font-size="12.5" fill="#334155" font-weight="600">Gösterim:</text>
+<rect x="148" y="1469" width="24" height="15" rx="3" fill="#f59e0b"/><text x="160" y="1480" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="180" y="1480" font-size="11.5" fill="#475569">Birincil anahtar</text>
+<rect x="380" y="1469" width="24" height="15" rx="3" fill="#0ea5e9"/><text x="392" y="1480" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="412" y="1480" font-size="11.5" fill="#475569">Yabancı anahtar</text>
+<path d="M 612 1476 L 632 1476" stroke="#64748b" stroke-width="1.6" fill="none"/><path d="M 627 1472 L 633 1476 L 627 1480" fill="#64748b"/>
+<text x="640" y="1480" font-size="11.5" fill="#475569">1 — N ilişki yönü</text>
+<circle cx="847" cy="1476" r="5" fill="#059669"/>
+<text x="858" y="1480" font-size="11.5" fill="#475569">Trigger ile hesaplanır: ortalama, harf notu</text>
+<text x="60" y="1506" font-size="11.5" fill="#64748b">Toplam 20 tablo · 20 yabancı anahtar ilişkisi · InnoDB · utf8mb4_turkish_ci · oluşturulma: 06.11.2026</text>
+</svg>

@@ -1,0 +1,12 @@
+# Gizli ayarlar
+config/config.local.php
+
+# Yüklenen dosyalar
+uploads/*
+!uploads/.htaccess
+
+# Log ve geçici dosyalar
+*.log
+tmp/
+.DS_Store
+Thumbs.db

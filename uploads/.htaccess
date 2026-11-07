@@ -1,0 +1,8 @@
+# Yüklenen dosyalara doğrudan erişim kapalı.
+# Dosyalar yalnızca yetki kontrolü yapan bir PHP sayfası üzerinden sunulur.
+Require all denied
+
+# Bu klasörde PHP çalıştırılamaz.
+<FilesMatch "\.(php|phtml|phar|cgi|pl)$">
+    Require all denied
+</FilesMatch>

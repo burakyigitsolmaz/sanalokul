@@ -266,7 +266,7 @@ require dirname(__DIR__) . '/templates/admin_bas.php';
                                            href="<?= e(url('admin/dersler.php?duzenle=' . (int) $d['id'] . ($bolumFiltre > 0 ? '&bolum=' . $bolumFiltre : ''))) ?>">Düzenle</a>
 
                                         <form method="post" action="<?= e(url('admin/dersler.php' . ($bolumFiltre > 0 ? '?bolum=' . $bolumFiltre : ''))) ?>"
-                                              onsubmit="return confirm('Bu ders ve bağlı tüm açılış/kayıtlar silinecek. Emin misiniz?');">
+                                              data-onay="Bu ders ve bağlı tüm açılış/kayıtlar silinecek. Emin misiniz?">
                                             <?= Auth::csrfAlani() ?>
                                             <input type="hidden" name="islem" value="sil">
                                             <input type="hidden" name="id" value="<?= e((string) $d['id']) ?>">

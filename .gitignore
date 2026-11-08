@@ -5,6 +5,10 @@ config/config.local.php
 uploads/*
 !uploads/.htaccess
 
+# Veritabanı yedekleri
+yedekler/*
+!yedekler/.htaccess
+
 # Log ve geçici dosyalar
 *.log
 tmp/

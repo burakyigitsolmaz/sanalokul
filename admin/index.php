@@ -176,6 +176,10 @@ require dirname(__DIR__) . '/templates/admin_bas.php';
                 <strong>CSV Aktar</strong>
                 <span>Toplu öğrenci ekle</span>
             </a>
+            <a class="hizli-kutu" href="<?= e(url('admin/raporlar.php')) ?>">
+                <strong>Raporlar</strong>
+                <span>Doluluk, başarı ve risk listesi</span>
+            </a>
         </div>
     </section>
 </div>

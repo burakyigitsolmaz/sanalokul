@@ -115,7 +115,7 @@ require dirname(__DIR__) . '/templates/admin_bas.php';
                                 <td class="metin-sag">
                                     <div class="satir-eylem">
                                         <form method="post" action="<?= e(url('admin/atama.php?acilis=' . $acilisId)) ?>"
-                                              onsubmit="return confirm('Bu kaydı silmek istediğinizden emin misiniz?');">
+                                              data-onay="Bu kaydı silmek istediğinizden emin misiniz?">
                                             <?= Auth::csrfAlani() ?>
                                             <input type="hidden" name="islem" value="sil">
                                             <input type="hidden" name="kayit_id" value="<?= e((string) $k['kayit_id']) ?>">

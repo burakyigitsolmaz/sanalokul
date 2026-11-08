@@ -467,7 +467,7 @@ require dirname(__DIR__) . '/templates/ogretmen_bas.php';
                            href="<?= e(url('ogretmen/odev.php?id=' . (int) $odev['id'])) ?>">Değerlendir →</a>
 
                         <form method="post" action="<?= e(url('ogretmen/ders.php?id=' . $acilisId . '&sekme=odevler')) ?>"
-                              onsubmit="return confirm('Ödev ve tüm teslim dosyaları silinecek. Emin misiniz?');">
+                              data-onay="Ödev ve tüm teslim dosyaları silinecek. Emin misiniz?">
                             <?= Auth::csrfAlani() ?>
                             <input type="hidden" name="islem" value="odev_sil">
                             <input type="hidden" name="odev_id" value="<?= e((string) $odev['id']) ?>">
@@ -525,7 +525,7 @@ require dirname(__DIR__) . '/templates/ogretmen_bas.php';
                             <?php endif; ?>
                         </div>
                         <form method="post" action="<?= e(url('ogretmen/ders.php?id=' . $acilisId . '&sekme=icerikler')) ?>"
-                              onsubmit="return confirm('Bu içerik silinsin mi?');">
+                              data-onay="Bu içerik silinsin mi?">
                             <?= Auth::csrfAlani() ?>
                             <input type="hidden" name="islem" value="icerik_sil">
                             <input type="hidden" name="icerik_id" value="<?= e((string) $icerik['id']) ?>">
@@ -600,7 +600,7 @@ require dirname(__DIR__) . '/templates/ogretmen_bas.php';
                     <div class="duyuru-govde">
                         <p><?= nl2br(e($duyuru['icerik'])) ?></p>
                         <form method="post" action="<?= e(url('ogretmen/ders.php?id=' . $acilisId . '&sekme=duyurular')) ?>"
-                              onsubmit="return confirm('Duyuru silinsin mi?');">
+                              data-onay="Duyuru silinsin mi?">
                             <?= Auth::csrfAlani() ?>
                             <input type="hidden" name="islem" value="duyuru_sil">
                             <input type="hidden" name="duyuru_id" value="<?= e((string) $duyuru['id']) ?>">

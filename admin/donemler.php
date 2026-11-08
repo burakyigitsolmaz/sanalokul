@@ -217,7 +217,7 @@ require dirname(__DIR__) . '/templates/admin_bas.php';
                                            href="<?= e(url('admin/donemler.php?duzenle=' . (int) $d['id'])) ?>">Düzenle</a>
 
                                         <form method="post" action="<?= e(url('admin/donemler.php')) ?>"
-                                              onsubmit="return confirm('Bu dönem silinecek. Bağlı ders açılışları da etkilenir. Emin misiniz?');">
+                                              data-onay="Bu dönem silinecek. Bağlı ders açılışları da etkilenir. Emin misiniz?">
                                             <?= Auth::csrfAlani() ?>
                                             <input type="hidden" name="islem" value="sil">
                                             <input type="hidden" name="id" value="<?= e((string) $d['id']) ?>">

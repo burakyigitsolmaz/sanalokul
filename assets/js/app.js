@@ -151,6 +151,28 @@
     });
 
     // ------------------------------------------------------------------
+    // Onay isteyen formlar (inline onsubmit yerine)
+    // ------------------------------------------------------------------
+    document.querySelectorAll('form[data-onay]').forEach(function (form) {
+        form.addEventListener('submit', function (olay) {
+            var mesaj = form.getAttribute('data-onay') || 'Devam edilsin mi?';
+
+            if (!window.confirm(mesaj)) {
+                olay.preventDefault();
+            }
+        });
+    });
+
+    // ------------------------------------------------------------------
+    // Yazdır düğmeleri (inline onclick yerine)
+    // ------------------------------------------------------------------
+    document.querySelectorAll('[data-yazdir]').forEach(function (dugme) {
+        dugme.addEventListener('click', function () {
+            window.print();
+        });
+    });
+
+    // ------------------------------------------------------------------
     // Form gönderilirken düğmeyi kilitle (çift tıklama koruması)
     // ------------------------------------------------------------------
     document.querySelectorAll('form[data-tek-gonderim]').forEach(function (form) {

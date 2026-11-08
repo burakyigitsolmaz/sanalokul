@@ -164,7 +164,7 @@ require dirname(__DIR__) . '/templates/admin_bas.php';
                                            href="<?= e(url('admin/bolumler.php?duzenle=' . (int) $b['id'])) ?>">Düzenle</a>
 
                                         <form method="post" action="<?= e(url('admin/bolumler.php')) ?>"
-                                              onsubmit="return confirm('Bu bölüm silinecek. Bağlı ders ve profiller varsa işlem başarısız olur. Emin misiniz?');">
+                                              data-onay="Bu bölüm silinecek. Bağlı ders ve profiller varsa işlem başarısız olur. Emin misiniz?">
                                             <?= Auth::csrfAlani() ?>
                                             <input type="hidden" name="islem" value="sil">
                                             <input type="hidden" name="id" value="<?= e((string) $b['id']) ?>">

@@ -364,6 +364,140 @@ ders içeriği ve duyuru ekleme.
 - CSV içe aktarmada aynı numara/e-posta varsa `uq_kullanici_*` kısıtlamasıyla hata veriyor (kullanıcıya anlaşılır mesaj veriliyor).
 - `islem_logları` tablo sayısı arttıkça loglar sayfası sayfalama ile sınırlı tutuluyor (25 kayıt/sayfa).
 
+## Faz 8 — Veri Senkronizasyonu ✅
+
+**Tarih:** 7 Kasım 2026
+
+### Yapılanlar
+
+- **`src/Senkron.php`:** okul kaynaklarından gerçek veri çeken senkron katmanı. Kaynaklar:
+  - **Yemek h:** Ankara Üniversitesi SKS aylık menü dosyası (`sksbasvuru.ankara.edu.tr/kayit/moduller/yemeklistesi/aylikmenu.php`, `application/vnd...spreadsheetml.sheet`). `ZipArchive` ile açılır; `xl/sharedStrings.xml` + `xl/worksheets/sheet1.xml` okunur. Excel seri tarihi → `Y-m-d` (`1899-12-30` tabanı, `UTC`). Her menü hücresi `(123 kkal)` kalıbına ayrılır; yalnız `toplam_kcal` `1364 KKAL` sütunundan okunur.
+  - **Haber h:** Nallıhan MYO WordPress REST API (`nallihanmyo.ankara.edu.tr/wp-json/wp/v2/posts?per_page=10&_fields=...`). `title.rendered` içindeki HTML varlıklıkları çözülür; `excerpt` `strip_tags + whitespace normalize + 500 karakter` yapılır.
+- **İdempotent yazma:** `yemek_menuleri` `tarih` üzerine `ON DUPLICATE KEY UPDATE`; `dis_haberler` `url` üzerine aynı işlem. `uq_yemek_tarih` ve `uq_haber_url(191)` kısıtları aynı kaydı ikinci kez eklemeyi engeller.
+- **`kaynak_senkron_durumu`** tablosu `bekliyor | calisiyor | basarili | hata` durum makinesiyle güncellenir (`son_deneme`, `son_basari`, `hata_mesaji`). Senkron her işlemde `calisiyor`'a çekilir, başarıda `son_basari = NOW()`, hatada `hata_mesaji` yazılır.
+- **`admin/senkron.php`:** "Veri Senkronizasyonu" ekranı — her kaynağın durumu, son deneme/başarı zamanı, hata mesajı,
+  "Hepsini Senkronize Et" ve kaynak bazında "Senkronize Et" düğmeleri (POST + CSRF), yaklaşan yemek menüsü ve son haberler listesi.
+- **Ana sayfa:** `dis_haberler`'den 4 haber kartı (`Son Kampüs Haberleri`) eklendi; "Kampüs Haberleri" özelliği `Yakında` rozetini kaybedip `#haberler` bağlantısı oldu.
+- **Test yardımcıları:** `oturum_test.php` ve CLI senkron deneme betiği Faz 8 doğrulamasında kullanıldı, sonunda silindi.
+
+### Doğrulama
+
+| Test | Sonuç |
+|---|---|
+| 55 PHP dosyası `php -l` | Sözdizimi temiz |
+| CLI: `tumunuGuncelle()` | `yemek: 21 menü günü eklendi (2026-10-30..2026-11-27)`, `haber: 10 haber eklendi` |
+| Yemek tablosu | 22 kayıt, hepsinde çorba/Kcal dolu |
+| `kaynak_senkron_durumu` | `yemek` ve `haber` satırları `basarili`, `son_basari` dolu |
+| Admin → Veri Senkronu | Her iki kaynak "Başarılı" görünüyor; yaklaşan menü ve haberler listeleniyor |
+| Ana sayfa | 09.11.2026, 1516 kcal, "Son Kampüs Haberleri" 4 kart görünüyor |
+| XLSX parse (`xlsx_test.php`) | 21 tarihli satır doğru sırayla okundu |
+| UTF-8 Türkçe karakterler (SPAGETTİ, ÇÖKERTME KEBAP) | Doğru |
+
+### Bilinen notlar
+
+- Kaynaklar internetten gelir; sınav/hafta sonu günlerinde SKS menü dosyası değişmezse `ON DUPLICATE KEY UPDATE` aynı kaydı günceller.
+- `php.ini` içinde `allow_url_fopen` açık değilse `file_get_contents` boş döner; senkron bu durumu "hata" olarak raporlar.
+- Aylık menü Excel'inde hafta sonları boş bırakılabilir; `tarih` yoksayılır, `Continue` eder.
+- Haber içeriği HTML'i olduğu için yalnızca başlık/özet alanları kullanılır; `content.rendered` çekilmedi (bu PHP'nin aynı SQL sorgusunda doğrudan kullanımı için).
+
 ### Sonraki faz
 
-Faz 8 — veri senkronizasyonu: aylık menü XLSX okuma (ZipArchive), haber çekme (WordPress REST), kaynak senkron durumu tablosu.
+Faz 7 - (planı kullanıcıyla onaylanacak; güvenlik sertleştirme, performans, yedekleme ve teslim dokümanı öneriliyor).
+
+## Faz 6 - Raporlama ve İstatistik Paneli ✅
+
+**Tarih:** 8 Kasım 2026
+
+### Yapılanlar
+
+- **`database/07_rapor.sql`:** 5 yeni görünüm + 2 prosedür.
+  - `v_ders_doluluk` — ders açılışı bazında kontenjan, kayıtlı öğrenci, doluluk yüzdesi.
+  - `v_ogretim_elemani_yuku` — hoca bazında dönem yükü (açılan ders, kayıtlı öğrenci, not girilen, ortalama).
+  - `v_donem_ozet` — dönem toplu göstergeleri (ders açılışı, kayıtlı öğrenci, not girme, geçen/kalan, başarı yüzdesi).
+  - `v_harf_notu_dagilimi` — dönem bazında harf notu dağılımı.
+  - `v_bolum_ozet` — bölüm bazında öğrenci, ders ve başarı özeti.
+  - `sp_donem_raporu(p_donem_id)` — ders bazlı rapor; `v_ders_doluluk` + `v_ders_basari_istatistik` birleşimi.
+  - `sp_riskli_ogrenciler(p_donem_id, p_esik)` — ortalaması eşiğin altında **veya** en az bir başarısız dersi olan öğrenciler (LIMIT 20).
+- **`src/Rapor.php`:** rapor veri katmanı — `donemSec`, `ozet` (not girme oranı türetimi), `dersRaporu` (CALL + `closeCursor`), `hocaYuku` (ders programından haftalık saat), `harfDagilimi`, `bolumOzeti`, `riskliOgrenciler`, `csvDersRaporu`, `ondalik`, `yuzdeSinifi`. Risk eşiği `RISK_ESIGI = 70`.
+- **`admin/raporlar.php`:** dönem seçici, 4 özet kartı (kayıtlı öğrenci, ders açılışı, not girme oranı, genel başarı), ders bazlı tablo (doluluk çubuğu + başarı rozeti), harf notu dağılım çubukları, bölüm özeti, öğretim elemanı yükü, akademik risk listesi. Yarım kartlarda tablolar sığmadığı için Bölüm/Hoca/Risk bölümleri `.satir-liste` + `.satir` düzenine çevrildi.
+- **`admin/rapor_csv.php`:** dönem raporunu CSV indirir — UTF-8 BOM, `;` ayırıcı, Türkçe ondalık virgül (Excel uyumlu), indirme `Auth::log` ile kaydedilir.
+- **Menü ve panel:** admin menüsüne "Raporlar", yönetici panelindeki hızlı işlemlere "Raporlar" kutusu eklendi.
+- **CSS (bölüm 26):** `.yazdir-baslik`, `.sayfa-eylem`, `.izgara > * { min-width: 0 }`, `.rapor-doluluk`, `.rapor-bar*`, `@media print` kuralları. Mobilde `.filtre-cubuk .filtre-alan { flex: 0 0 auto }` ile select kutusunun 180px yüksekliğe uzaması engellendi.
+
+### Doğrulama
+
+| Test | Sonuç |
+|---|---|
+| 58 PHP dosyası `php -l` | Sözdizimi temiz |
+| Veritabanı nesneleri | 8 view, 4 prosedür |
+| `sp_donem_raporu(3)` | 11 ders açılışı; NBP101 %25 doluluk, ort. 68,60, başarı %66,7 |
+| `sp_riskli_ogrenciler(3, 70)` | 9 öğrenci (ortalama < 70 veya başarısız ders) |
+| Yönetici → Raporlar (1600 px) | Tüm kartlar ve listeler düzgün, taşma yok |
+| Mobil ölçüm (390 px iframe) | `scrollWidth = clientWidth = 390`, yatay taşma yok |
+| CSV indirme | HTTP 200, `ders-raporu-2026-2027-guz.csv`, BOM `EF BB BF`, Türkçe karakterler doğru |
+| CSV log kaydı | `islem_loglari` tablosuna "Dönem raporu CSV indirildi" düştü |
+| Boş dönem (donem=1) | "Ders açılışı bulunmuyor" / "Not yok" boş durumları görünüyor |
+
+### Bilinen notlar
+
+- Raporlar anlık veriden üretilir; ayrı bir özet tablo tutulmaz. Veri büyüdükçe view'ler yavaşlayabilir (Faz 7'de indeks/performans bakılabilir).
+- Risk listesi `LIMIT 20`; daha uzun liste gerekirse prosedür parametresi eklenebilir.
+- CSV yalnızca ders bazlı raporu indirir; harf/bölüm/hoca raporları ekranda kalır.
+- `donem=1` gibi veri olmayan dönemlerde yüzde alanları `—` gösterilir.
+
+## Faz 7 - Güvenlik, Performans, Yedekleme ve Teslim ✅
+
+**Tarih:** 8 Kasım 2026
+
+### Yapılanlar
+
+- **`src/Guvenlik.php`:** istek başına CSP nonce üretir ve güvenlik başlıklarını gönderir.
+  - `Content-Security-Policy`: `default-src 'self'`, `script-src 'self' 'nonce-...'`
+    (satır içi `onclick/onsubmit` yasak), `frame-ancestors 'none'`, `object-src 'none'`.
+  - `Cross-Origin-Opener-Policy`, `Cross-Origin-Resource-Policy`, HTTPS'te HSTS.
+  - `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`
+    kök `.htaccess` içinde tanımlı (statik dosyalar için de geçerli).
+- **Satır içi olay işleyicileri kaldırıldı:** 11 `onsubmit="return confirm(...)"` →
+  `data-onay`, 2 `onclick="window.print()"` → `data-yazdir`. Davranış `assets/js/app.js`
+  içinde merkezîleştirildi.
+- **CSP nonce:** `templates/head.php` ve `admin/kullanici.php` içindeki satır içi
+  betikler nonce ile işaretlendi.
+- **Oturum sertleştirme:** girişli oturum kimliği 30 dakikada bir yenilenir
+  (`Auth::kimlikYenile`); girişte `son_yenileme` yazılır.
+- **CSV yükleme sınırı:** en fazla 2 MB (uzantı kontrolüne ek).
+- **`database/00_kurulum.sql`:** veritabanı + `sanalokul_app` kullanıcısı + izinler.
+  Yedek için `TRIGGER, EVENT, SHOW VIEW` ve `mysql.proc` SELECT izni eklendi.
+- **`database/08_performans.sql`:** 6 bileşik indeks + `ANALYZE TABLE`.
+- **`scripts/yedekle.php`:** `mysqldump` ile `.sql.gz` yedeği; şifre geçici
+  `--defaults-extra-file` üzerinden verilir, son 10 yedek tutulur. `yedekler/`
+  web erişimine kapalı ve `.gitignore`'da.
+- **Doküman:** `docs/TESLIM.md` (kurulum, özellikler, ER özeti, güvenlik, yedekleme,
+  test listesi, ekran görüntüleri) ve kök `README.md`.
+- **Ekran görüntüleri:** `docs/ekranlar/` altında 5 görsel (ana sayfa, öğrenci paneli,
+  öğretmen not girişi, yönetici paneli, yönetici raporları).
+
+### Doğrulama
+
+| Test | Sonuç |
+|---|---|
+| PHP `php -l` | 60 dosya temiz |
+| Güvenlik başlıkları | CSP + `X-Frame-Options: DENY` + `nosniff` + COOP/CORP tekilleştirildi |
+| CSP nonce | Ana sayfa, giriş, 3 panel ve rapor ekranı hatasız render edildi |
+| Oturum yenileme | Girişte `son_yenileme` yazılıyor; 30 dk sonrası kimlik yenileniyor |
+| CSV boyut sınırı | 2 MB üstü dosya reddediliyor |
+| `08_performans.sql` | 6 indeks oluştu; `ANALYZE` OK |
+| Yedek betiği | `sanalokul-20261108-041746.sql.gz` (20,6 KB); açıldığında 20 tablo, 4 trigger, 4 prosedür, 8 view |
+| Mobil 390 px | Yatay taşma yok (Faz 6 doğrulaması korunuyor) |
+| Ekran görüntüleri | 5 görsel `docs/ekranlar/` altında |
+
+### Bilinen notlar
+
+- Yedek betiği yerel makine içindir; uzak sunucuya kopyalama yapmaz.
+- HSTS yalnızca HTTPS'te gönderilir; XAMPP geliştirme ortamı HTTP olduğu için görünmez.
+- CSP'de `style-src 'unsafe-inline'` korunuyor (tablo genişlikleri ve tema için satır içi stil var).
+- `mysql.proc` SELECT izni yalnızca prosedür tanımlarını okumak içindir; uygulama bu izni kullanmaz.
+
+### Sonraki faz
+
+Proje fazları tamamlandı. Teslim öncesi isteğe bağlı işler: gerçek sunucuda HTTPS +
+şifre değişimi, demo hesapların kaldırılması, uzak yedek kopyası.

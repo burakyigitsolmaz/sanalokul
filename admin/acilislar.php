@@ -267,7 +267,7 @@ require dirname(__DIR__) . '/templates/admin_bas.php';
                                            href="<?= e(url('admin/acilislar.php?duzenle=' . (int) $a['id'] . ($donemFiltre > 0 ? '&donem=' . $donemFiltre : ''))) ?>">Düzenle</a>
 
                                         <form method="post" action="<?= e(url('admin/acilislar.php' . ($donemFiltre > 0 ? '?donem=' . $donemFiltre : ''))) ?>"
-                                              onsubmit="return confirm('Bu açılış ve bağlı kayıtlar silinecek. Emin misiniz?');">
+                                              data-onay="Bu açılış ve bağlı kayıtlar silinecek. Emin misiniz?">
                                             <?= Auth::csrfAlani() ?>
                                             <input type="hidden" name="islem" value="sil">
                                             <input type="hidden" name="id" value="<?= e((string) $a['id']) ?>">

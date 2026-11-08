@@ -276,7 +276,7 @@ require dirname(__DIR__) . '/templates/admin_bas.php';
     </form>
 <?php endif; ?>
 
-<script>
+<script nonce="<?= e(Guvenlik::nonce()) ?>">
 (function () {
     var rol = document.querySelector('[data-rol-secim]');
     if (!rol) { return; }

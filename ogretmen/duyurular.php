@@ -186,7 +186,7 @@ require dirname(__DIR__) . '/templates/ogretmen_bas.php';
                             Ders Duyuruları
                         </a>
                         <form method="post" action="<?= e(url('ogretmen/duyurular.php')) ?>"
-                              onsubmit="return confirm('Duyuru silinsin mi?');">
+                              data-onay="Duyuru silinsin mi?">
                             <?= Auth::csrfAlani() ?>
                             <input type="hidden" name="islem" value="duyuru_sil">
                             <input type="hidden" name="duyuru_id" value="<?= e((string) $duyuru['id']) ?>">

@@ -35,7 +35,7 @@ require dirname(__DIR__) . '/templates/panel_bas.php';
         <h1>Transkript</h1>
         <p><?= e($kullanici['numara']) ?> · <?= e($kullanici['ad_soyad']) ?> · <?= e($kullanici['bolum'] ?? '-') ?></p>
     </div>
-    <button class="dugme dugme-hayalet dugme-kucuk" type="button" onclick="window.print()"> Yazdır</button>
+    <button class="dugme dugme-hayalet dugme-kucuk" type="button" data-yazdir> Yazdır</button>
 </div>
 
 <div class="izgara izgara-4" style="margin-bottom:22px">

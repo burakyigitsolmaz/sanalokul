@@ -190,7 +190,7 @@ require dirname(__DIR__) . '/templates/admin_bas.php';
                             <td class="metin-sag">
                                 <div class="satir-eylem">
                                     <form method="post" action="<?= e(url('admin/duyurular.php' . ($kapsam !== '' ? '?kapsam=' . $kapsam : ''))) ?>"
-                                          onsubmit="return confirm('Bu duyuru silinecek. Emin misiniz?');">
+                                          data-onay="Bu duyuru silinecek. Emin misiniz?">
                                         <?= Auth::csrfAlani() ?>
                                         <input type="hidden" name="islem" value="sil">
                                         <input type="hidden" name="id" value="<?= e((string) $d['id']) ?>">

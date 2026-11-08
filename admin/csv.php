@@ -26,6 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Auth::flash('hata', 'Geçerli bir CSV dosyası seçin.');
         } elseif (!in_array(strtolower(pathinfo($dosya['name'], PATHINFO_EXTENSION)), ['csv', 'txt'], true)) {
             Auth::flash('hata', 'Yalnızca .csv veya .txt dosyası kabul edilir.');
+        } elseif ((int) ($dosya['size'] ?? 0) > 2 * 1024 * 1024) {
+            Auth::flash('hata', 'CSV dosyası en fazla 2 MB olabilir.');
         } elseif (mb_strlen($sifre, 'UTF-8') < 8) {
             Auth::flash('hata', 'Varsayılan şifre en az 8 karakter olmalıdır.');
         } else {

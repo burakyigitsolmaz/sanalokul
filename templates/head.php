@@ -23,7 +23,7 @@ $temaSecim   = Auth::tema();
     <title><?= e($sayfaBaslik) ?> · <?= e(config('uygulama.ad')) ?></title>
     <link rel="icon" type="image/png" href="<?= e(url('assets/img/logo.png')) ?>">
     <link rel="stylesheet" href="<?= e(url('assets/css/app.css')) ?>">
-    <script>
+    <script nonce="<?= e(Guvenlik::nonce()) ?>">
         /* Tema, sayfa boyanmadan önce uygulanır (flash önleme). */
         (function () {
             try {

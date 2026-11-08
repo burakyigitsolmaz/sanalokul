@@ -78,6 +78,33 @@ final class Auth
         }
 
         $_SESSION['son_aktivite'] = time();
+
+        self::kimlikYenile();
+    }
+
+    /**
+     * Girişli oturum kimliğini belirli aralıklarla yeniler (oturum sabitleme
+     * saldırılarına karşı ek koruma).
+     */
+    private static function kimlikYenile(): void
+    {
+        if (!self::girisYapmisMi() || headers_sent()) {
+            return;
+        }
+
+        $son = (int) ($_SESSION['son_yenileme'] ?? 0);
+        $ara = 1800; // 30 dakika
+
+        if ($son === 0) {
+            $_SESSION['son_yenileme'] = time();
+
+            return;
+        }
+
+        if (time() - $son >= $ara) {
+            session_regenerate_id(true);
+            $_SESSION['son_yenileme'] = time();
+        }
     }
 
     public static function girisYapmisMi(): bool
@@ -242,6 +269,7 @@ final class Auth
         $_SESSION['kullanici_id'] = (int) $kullanici['id'];
         $_SESSION['kullanici']    = $kullanici;
         $_SESSION['son_aktivite'] = time();
+        $_SESSION['son_yenileme'] = time();
         $_SESSION['csrf']         = bin2hex(random_bytes(32));
 
         self::$kullanici = $kullanici;

@@ -23,9 +23,11 @@ $panelMenu = [
     ['anahtar' => 'dersler',     'ad' => 'Dersler',           'yol' => url('admin/dersler.php')],
     ['anahtar' => 'acilislar',   'ad' => 'Ders Açılışları',   'yol' => url('admin/acilislar.php')],
     ['anahtar' => 'atama',       'ad' => 'Derse Atama',       'yol' => url('admin/atama.php')],
+    ['anahtar' => 'raporlar',    'ad' => 'Raporlar',          'yol' => url('admin/raporlar.php')],
     ['anahtar' => 'duyurular',   'ad' => 'Duyurular',         'yol' => url('admin/duyurular.php')],
     ['anahtar' => 'loglar',      'ad' => 'İşlem Logları',     'yol' => url('admin/loglar.php')],
     ['anahtar' => 'csv',         'ad' => 'CSV Aktarma',       'yol' => url('admin/csv.php')],
+    ['anahtar' => 'senkron',     'ad' => 'Veri Senkronu',     'yol' => url('admin/senkron.php')],
 ];
 ?>
 <div class="panel-duzen">

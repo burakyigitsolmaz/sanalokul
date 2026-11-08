@@ -68,8 +68,12 @@ try {
     }
 
     $yemekBugun = $yemek !== null && (string) $yemek['tarih'] === date('Y-m-d');
+
+    // Son haberler (senkron veritabanından gelir)
+    $haberler = Senkron::haberOzeti(4);
 } catch (Throwable $hata) {
     $hataMesaji = $hata->getMessage();
+    $haberler = [];
 }
 
 $sayfaBaslik = 'Ana Sayfa';
@@ -110,8 +114,8 @@ $ozellikler = [
     [
         'ad'       => 'Kampüs Haberleri',
         'aciklama' => 'Nallıhan MYO’nun resmî sitesinden son haberler.',
-        'durum'    => 'yakinda',
-        'yol'      => null,
+        'durum'    => 'hazir',
+        'yol'      => '#haberler',
     ],
 ];
 
@@ -254,6 +258,31 @@ require __DIR__ . '/templates/header.php';
                         <div class="metin-silik metin-kucuk"><?= e((string) $kcal) ?> kcal</div>
                     <?php endif; ?>
                 </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+<?php endif; ?>
+
+<?php if ($haberler !== []): ?>
+    <section class="kart mt-2" id="haberler">
+        <div class="kart-baslik">
+            <h3>Son Kampüs Haberleri</h3>
+            <span class="rozet"><?= e((string) count($haberler)) ?> haber</span>
+        </div>
+
+        <div class="izgara izgara-2" style="align-items:start;gap:12px">
+            <?php foreach ($haberler as $haber): ?>
+                <article class="haber-kutu">
+                    <a class="haber-baglanti" href="<?= e($haber['url']) ?>" target="_blank" rel="noopener noreferrer">
+                        <?= e($haber['baslik']) ?>
+                    </a>
+                    <?php if (!empty($haber['ozet'])): ?>
+                        <p class="haber-ozet"><?= e(mb_strimwidth((string) $haber['ozet'], 0, 140, '…')) ?></p>
+                    <?php endif; ?>
+                    <div class="metin-silik metin-kucuk">
+                        <?= e(!empty($haber['yayin_tarihi']) ? tarih_tr(substr((string) $haber['yayin_tarihi'], 0, 10)) : '') ?>
+                    </div>
+                </article>
             <?php endforeach; ?>
         </div>
     </section>

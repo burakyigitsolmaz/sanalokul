@@ -185,7 +185,7 @@ require dirname(__DIR__) . '/templates/admin_bas.php';
                                     </form>
 
                                     <form method="post" action="<?= e(url('admin/kullanicilar.php')) ?>"
-                                          onsubmit="return confirm('Bu kullanıcı silinecek. Emin misiniz?');">
+                                          data-onay="Bu kullanıcı silinecek. Emin misiniz?">
                                         <?= Auth::csrfAlani() ?>
                                         <input type="hidden" name="islem" value="sil">
                                         <input type="hidden" name="id" value="<?= e((string) $k['id']) ?>">

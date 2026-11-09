@@ -34,7 +34,16 @@ $panelMenu = [
             </div>
         <?php endif; ?>
 
-        <nav class="panel-menu" aria-label="Öğretim elemanı paneli menüsü">
+        <button class="panel-menu-dugme" type="button" data-panel-menu
+                aria-expanded="false" aria-controls="panelMenu">
+            <span>Bölümler</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6"/>
+            </svg>
+        </button>
+
+        <nav class="panel-menu" id="panelMenu" aria-label="Öğretim elemanı paneli menüsü">
             <?php foreach ($panelMenu as $oge): ?>
                 <a class="<?= $panelAktif === $oge['anahtar'] ? 'aktif' : '' ?>"
                    href="<?= e($oge['yol']) ?>"

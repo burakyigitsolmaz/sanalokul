@@ -58,6 +58,20 @@ if (!function_exists('url')) {
     }
 }
 
+if (!function_exists('varlik')) {
+    /**
+     * Statik varlıklara dosya zamanından sürüm ekler; tarayıcı önbelleğini kırar.
+     * varlik('assets/css/app.css') => /sanalokul/assets/css/app.css?v=1699999999
+     */
+    function varlik(string $yol): string
+    {
+        $adres = url($yol);
+        $dosya = dirname(__DIR__) . DIRECTORY_SEPARATOR . ltrim($yol, '/');
+
+        return is_file($dosya) ? $adres . '?v=' . filemtime($dosya) : $adres;
+    }
+}
+
 if (!function_exists('tarih_tr')) {
     /**
      * 2026-11-06 => 06.11.2026

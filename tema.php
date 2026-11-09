@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $tema = (string) ($_POST['tema'] ?? '');
 
-if (!in_array($tema, ['sistem', 'acik', 'koyu'], true)) {
+if (!in_array($tema, ['acik', 'koyu'], true)) {
     http_response_code(422);
     echo json_encode(['ok' => false, 'mesaj' => 'Geçersiz tema değeri.'], JSON_UNESCAPED_UNICODE);
     exit;

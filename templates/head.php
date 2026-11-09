@@ -20,23 +20,24 @@ $temaSecim   = Auth::tema();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="Ankara Üniversitesi Nallıhan MYO Sanal Okul - ders projesi">
+    <meta name="theme-color" content="#0a1226">
     <title><?= e($sayfaBaslik) ?> · <?= e(config('uygulama.ad')) ?></title>
     <link rel="icon" type="image/png" href="<?= e(url('assets/img/logo.png')) ?>">
-    <link rel="stylesheet" href="<?= e(url('assets/css/app.css')) ?>">
+    <link rel="stylesheet" href="<?= e(varlik('assets/css/app.css')) ?>">
     <script nonce="<?= e(Guvenlik::nonce()) ?>">
-        /* Tema, sayfa boyanmadan önce uygulanır (flash önleme). */
+        /* Tema, sayfa boyanmadan önce uygulanır (flash önleme).
+           İki mod vardır: koyu ve acik. Eski "sistem" tercihi koyuya çekilir. */
         (function () {
             try {
                 var secim = localStorage.getItem('sanalokul-tema')
                     || document.documentElement.getAttribute('data-tema-secim')
-                    || 'sistem';
-                var gercek = secim;
-                if (secim === 'sistem') {
-                    gercek = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-                        ? 'koyu'
-                        : 'acik';
+                    || 'koyu';
+
+                if (secim !== 'acik') {
+                    secim = 'koyu';
                 }
-                document.documentElement.setAttribute('data-tema', gercek);
+
+                document.documentElement.setAttribute('data-tema', secim);
                 document.documentElement.setAttribute('data-tema-secim', secim);
             } catch (e) {
                 /* localStorage kapalıysa varsayılan koyu tema kalır */

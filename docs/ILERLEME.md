@@ -473,8 +473,9 @@ Faz 7 - (planı kullanıcıyla onaylanacak; güvenlik sertleştirme, performans,
   web erişimine kapalı ve `.gitignore`'da.
 - **Doküman:** `docs/TESLIM.md` (kurulum, özellikler, ER özeti, güvenlik, yedekleme,
   test listesi, ekran görüntüleri) ve kök `README.md`.
-- **Ekran görüntüleri:** `docs/ekranlar/` altında 5 görsel (ana sayfa, öğrenci paneli,
-  öğretmen not girişi, yönetici paneli, yönetici raporları).
+- **Ekran görüntüleri:** `docs/ekranlar/` altında 11 görsel (giriş ekranının koyu/açık
+  hâli, ana sayfa, öğrenci paneli, öğretmen not girişi, yönetici paneli ve raporları;
+  açık tema örnekleri dâhil).
 
 ### Doğrulama
 
@@ -488,7 +489,7 @@ Faz 7 - (planı kullanıcıyla onaylanacak; güvenlik sertleştirme, performans,
 | `08_performans.sql` | 6 indeks oluştu; `ANALYZE` OK |
 | Yedek betiği | `sanalokul-20261108-041746.sql.gz` (20,6 KB); açıldığında 20 tablo, 4 trigger, 4 prosedür, 8 view |
 | Mobil 390 px | Yatay taşma yok (Faz 6 doğrulaması korunuyor) |
-| Ekran görüntüleri | 5 görsel `docs/ekranlar/` altında |
+| Ekran görüntüleri | 11 görsel `docs/ekranlar/` altında |
 
 ### Bilinen notlar
 

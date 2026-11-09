@@ -20,6 +20,11 @@ ErrorDocument 404 /sanalokul/404.php
 </FilesMatch>
 
 # Yardımcı dosyalara doğrudan erişimi kapat
-<FilesMatch "^(kurulum|README|composer)\.(php|md|json|lock)$">
+<FilesMatch "^(README|composer)\.(php|md|json|lock)$">
     Require all denied
 </FilesMatch>
+
+# Kurulum sağlık kontrolü yalnızca yerel makineden açılabilir
+<Files "kurulum.php">
+    Require ip 127.0.0.1 ::1
+</Files>

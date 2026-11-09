@@ -21,6 +21,8 @@ C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\05_seed.sql
 C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\06_seed_faz3.sql
 C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\07_rapor.sql
 C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\08_performans.sql
+C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\09_tema.sql
+C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\10_ogrenci_temizlik.sql
 ```
 
 `config/config.local.php` dosyasını oluşturun (bkz. `docs/TESLIM.md`), Apache ve

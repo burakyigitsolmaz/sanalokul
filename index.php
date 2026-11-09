@@ -124,21 +124,23 @@ require __DIR__ . '/templates/header.php';
 
 <?php if (!$girisYapmisMi): ?>
     <section class="hero">
-        <img class="hero-gorsel" src="<?= e(url('assets/img/kampus.jpg')) ?>" alt="Nallıhan MYO kampüsü">
-        <div class="hero-katman"></div>
+        <div class="hero-desen" aria-hidden="true"></div>
         <div class="hero-icerik">
             <span class="hero-etiket">Ankara Üniversitesi · Nallıhan MYO</span>
-            <h1>Derslerin, notların ve duyuruların tek yerde.</h1>
+            <h1>Nallıhan MYO <span>Sanal Okul</span></h1>
             <p>
+                Derslerin, notların, ödevlerin ve duyuruların tek yerde.
                 Bilgisayar Programcılığı öğrencileri için hazırlanmış sanal okul uygulaması.
-                Ders programını gör, notlarını takip et, yemek menüsünü ve duyuruları kaçırma.
             </p>
             <div class="hero-dugme-grubu">
                 <a class="dugme dugme-birincil" href="<?= e(url('giris.php')) ?>">Giriş Yap</a>
-                <a class="dugme dugme-hayalet" href="#ozellikler" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);color:#eaf2ff">
-                    Neler var?
-                </a>
+                <a class="dugme dugme-hayalet" href="#ozellikler">Neler var?</a>
             </div>
+            <ul class="hero-notlar">
+                <li>Öğrenci, öğretim elemanı ve yönetici panelleri</li>
+                <li>Not, transkript ve ödev takibi</li>
+                <li>Mobil uyumlu arayüz</li>
+            </ul>
         </div>
     </section>
 <?php else: ?>

@@ -1,6 +1,6 @@
 /* =====================================================================
    Nallıhan MYO Sanal Okul - Arayüz betiği
-   Tema değiştirme, mobil menü, flash mesaj.
+   İki temalı geçiş (koyu/açık), mobil çekmece menü, flash mesaj.
    ===================================================================== */
 (function () {
     'use strict';
@@ -9,30 +9,33 @@
     var kok = document.documentElement;
 
     // ------------------------------------------------------------------
-    // Tema
+    // Tema (yalnızca iki mod: koyu ve acik)
     // ------------------------------------------------------------------
-    function sistemTemasi() {
-        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'koyu'
-            : 'acik';
+    function secili() {
+        var tema = localStorage.getItem(TEMA_ANAHTARI)
+            || kok.getAttribute('data-tema-secim')
+            || 'koyu';
+
+        return tema === 'acik' ? 'acik' : 'koyu';
     }
 
     function uygula(tema) {
-        var gercek = tema === 'sistem' ? sistemTemasi() : tema;
+        var gercek = tema === 'acik' ? 'acik' : 'koyu';
+        var etiket = gercek === 'acik' ? 'Açık' : 'Koyu';
+
         kok.setAttribute('data-tema', gercek);
-        kok.setAttribute('data-tema-secim', tema);
+        kok.setAttribute('data-tema-secim', gercek);
 
         var dugme = document.getElementById('temaDugme');
         if (dugme) {
-            var etiket = tema === 'sistem' ? 'Sistem teması' : (tema === 'acik' ? 'Açık tema' : 'Koyu tema');
-            dugme.setAttribute('title', etiket + ' · değiştirmek için tıkla');
-            dugme.setAttribute('aria-label', etiket + ' · değiştirmek için tıkla');
-            dugme.textContent = tema === 'sistem' ? '◐' : (tema === 'acik' ? '☀' : '☾');
+            dugme.setAttribute('title', etiket + ' tema · değiştirmek için tıkla');
+            dugme.setAttribute('aria-label', etiket + ' tema · değiştirmek için tıkla');
+            dugme.setAttribute('aria-pressed', gercek === 'acik' ? 'true' : 'false');
         }
-    }
 
-    function secili() {
-        return localStorage.getItem(TEMA_ANAHTARI) || kok.getAttribute('data-tema-secim') || 'sistem';
+        document.querySelectorAll('[data-tema-etiket]').forEach(function (etiketAlani) {
+            etiketAlani.textContent = etiket;
+        });
     }
 
     function kaydet(tema) {
@@ -63,64 +66,122 @@
         });
     }
 
+    function temaDegistir() {
+        kaydet(secili() === 'koyu' ? 'acik' : 'koyu');
+    }
+
     uygula(secili());
 
     var temaDugme = document.getElementById('temaDugme');
     if (temaDugme) {
-        temaDugme.addEventListener('click', function () {
-            var sira = ['koyu', 'acik', 'sistem'];
-            var simdiki = secili();
-            var sonraki = sira[(sira.indexOf(simdiki) + 1) % sira.length];
-            kaydet(sonraki);
-        });
+        temaDugme.addEventListener('click', temaDegistir);
     }
 
-    // Sistem teması seçiliyse işletim sistemi değişimini takip et.
-    if (window.matchMedia) {
-        var mq = window.matchMedia('(prefers-color-scheme: dark)');
-        var dinle = function () {
-            if (secili() === 'sistem') {
-                uygula('sistem');
-            }
-        };
+    document.querySelectorAll('[data-tema-degistir]').forEach(function (dugme) {
+        dugme.addEventListener('click', temaDegistir);
+    });
 
-        if (mq.addEventListener) {
-            mq.addEventListener('change', dinle);
-        } else if (mq.addListener) {
-            mq.addListener(dinle);
+    // ------------------------------------------------------------------
+    // Giriş ekranı: demo hesap çipleri (tıklayınca e-postayı doldurur)
+    // ------------------------------------------------------------------
+    document.querySelectorAll('[data-demo-eposta]').forEach(function (dugme) {
+        dugme.addEventListener('click', function () {
+            var eposta = document.getElementById('eposta');
+            var sifre = document.getElementById('sifre');
+
+            if (eposta) {
+                eposta.value = dugme.getAttribute('data-demo-eposta') || '';
+                eposta.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+
+            if (sifre) {
+                sifre.focus();
+            }
+        });
+    });
+
+    // ------------------------------------------------------------------
+    // Mobil çekmece menü
+    // ------------------------------------------------------------------
+    var menuDugme = document.getElementById('menuDugme');
+    var cekmece = document.getElementById('cekmece');
+    var katman = document.getElementById('cekmeceKatman');
+    var kapatDugme = document.getElementById('cekmeceKapat');
+
+    function cekmeceAc() {
+        if (!cekmece || !katman || !menuDugme) {
+            return;
+        }
+
+        cekmece.classList.add('acik');
+        katman.classList.add('acik');
+        document.body.classList.add('cekmece-acik');
+        menuDugme.setAttribute('aria-expanded', 'true');
+        cekmece.setAttribute('aria-hidden', 'false');
+        katman.setAttribute('aria-hidden', 'false');
+
+        if (kapatDugme) {
+            kapatDugme.focus();
         }
     }
 
-    // ------------------------------------------------------------------
-    // Mobil menü
-    // ------------------------------------------------------------------
-    var menuDugme = document.getElementById('menuDugme');
-    var ustMenu = document.getElementById('ustMenu');
+    function cekmeceKapat() {
+        if (!cekmece || !katman || !menuDugme) {
+            return;
+        }
 
-    if (menuDugme && ustMenu) {
-        menuDugme.addEventListener('click', function (olay) {
-            olay.stopPropagation();
-            var acik = ustMenu.classList.toggle('acik');
-            menuDugme.setAttribute('aria-expanded', acik ? 'true' : 'false');
+        cekmece.classList.remove('acik');
+        katman.classList.remove('acik');
+        document.body.classList.remove('cekmece-acik');
+        menuDugme.setAttribute('aria-expanded', 'false');
+        cekmece.setAttribute('aria-hidden', 'true');
+        katman.setAttribute('aria-hidden', 'true');
+        menuDugme.focus();
+    }
+
+    if (menuDugme && cekmece && katman) {
+        menuDugme.addEventListener('click', function () {
+            if (cekmece.classList.contains('acik')) {
+                cekmeceKapat();
+            } else {
+                cekmeceAc();
+            }
         });
 
-        document.addEventListener('click', function (olay) {
-            if (!ustMenu.classList.contains('acik')) {
-                return;
-            }
+        katman.addEventListener('click', cekmeceKapat);
 
-            if (!ustMenu.contains(olay.target) && !menuDugme.contains(olay.target)) {
-                ustMenu.classList.remove('acik');
-                menuDugme.setAttribute('aria-expanded', 'false');
-            }
+        if (kapatDugme) {
+            kapatDugme.addEventListener('click', cekmeceKapat);
+        }
+
+        // Menüden bir bağlantıya tıklanınca çekmeceyi kapat.
+        cekmece.querySelectorAll('a').forEach(function (baglanti) {
+            baglanti.addEventListener('click', function () {
+                cekmece.classList.remove('acik');
+                katman.classList.remove('acik');
+                document.body.classList.remove('cekmece-acik');
+            });
         });
 
         document.addEventListener('keydown', function (olay) {
-            if (olay.key === 'Escape' && ustMenu.classList.contains('acik')) {
-                ustMenu.classList.remove('acik');
-                menuDugme.setAttribute('aria-expanded', 'false');
+            if (olay.key === 'Escape' && cekmece.classList.contains('acik')) {
+                cekmeceKapat();
             }
         });
+
+        // Ekran büyütülürse açık kalan çekmeceyi kapat.
+        var genislik = window.matchMedia('(min-width: 961px)');
+        var genislikDinle = function (olay) {
+            if (olay.matches && cekmece.classList.contains('acik')) {
+                cekmeceKapat();
+            }
+        };
+
+        if (genislik.addEventListener) {
+            genislik.addEventListener('change', genislikDinle);
+        } else if (genislik.addListener) {
+            genislik.addListener(genislikDinle);
+        }
     }
 
     // ------------------------------------------------------------------
@@ -184,6 +245,20 @@
                 dugme.style.opacity = '0.72';
                 dugme.textContent = 'Gönderiliyor…';
             }
+        });
+    });
+    // ------------------------------------------------------------------
+    // Panel menüsü (mobilde açılır)
+    // ------------------------------------------------------------------
+    document.querySelectorAll('[data-panel-menu]').forEach(function (dugme) {
+        dugme.addEventListener('click', function () {
+            var menu = document.getElementById('panelMenu');
+            if (!menu) {
+                return;
+            }
+
+            var acik = menu.classList.toggle('acik');
+            dugme.setAttribute('aria-expanded', acik ? 'true' : 'false');
         });
     });
 })();

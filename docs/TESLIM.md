@@ -16,7 +16,7 @@ Bilgisayar Programcılığı · 2025–2026
 | Proje adı | Nallıhan MYO Sanal Okul |
 | Sürüm | v0.1.0 |
 | Tür | PHP + MySQL (MariaDB) web uygulaması |
-| Arayüz | Türkçe, mobile-first, koyu tema varsayılan (açık/sistem seçenekli) |
+| Arayüz | Türkçe, mobile-first, koyu tema varsayılan (açık tema seçenekli) |
 | Sunucu | Apache + PHP 8 (XAMPP) |
 | Veritabanı | MariaDB 10.11 · `utf8mb4_turkish_ci` |
 | Adres | `http://localhost/sanalokul/` |
@@ -58,6 +58,8 @@ C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\05_seed.sql
 C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\06_seed_faz3.sql
 C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\07_rapor.sql
 C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\08_performans.sql
+C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\09_tema.sql
+C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\10_ogrenci_temizlik.sql
 ```
 
 | Dosya | İçerik |
@@ -71,6 +73,8 @@ C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\08_performans.sql
 | `06_seed_faz3.sql` | Program, ödev, teslim, duyuru örnekleri |
 | `07_rapor.sql` | Rapor view'leri + `sp_donem_raporu`, `sp_riskli_ogrenciler` |
 | `08_performans.sql` | Rapor ve panel sorguları için bileşik indeksler |
+| `09_tema.sql` | Tema tercihini iki moda indirir (`acik`, `koyu`) |
+| `10_ogrenci_temizlik.sql` | Demo öğrenci sayısını ikiye indirir (Burak, Kaan) |
 
 ### 2.4. Uygulama ayarı
 
@@ -146,7 +150,7 @@ Tüm demo hesaplar `@ornek.local` adresini kullanır.
 ### 4.4. Genel
 
 - Ana sayfada günün/yaklaşan yemek menüsü ve son kampüs haberleri
-- Koyu / açık / sistem teması (kullanıcı tercihi veritabanında saklanır)
+- Koyu / açık tema (kullanıcı tercihi veritabanında saklanır)
 - Mobil uyumlu düzen (390 px'te yatay taşma yok)
 - Alt bilgide "resmî uygulama değildir" notu
 
@@ -299,10 +303,10 @@ C:\xampp\mysql\bin\mysql.exe -u root sanalokul < yedek.sql
 | CSRF'siz POST | Reddedilir |
 | Not girişi | Ortalama/harf notu trigger ile güncellenir |
 | Derse kayıt | Kontenjan/çakışma kontrolü çalışır |
-| Rapor ekranı | Dönem 3: 11 ders, %80 başarı, 9 riskli öğrenci |
+| Rapor ekranı | Dönem 3: 11 ders, %75 başarı, 2 riskli öğrenci |
 | CSV indirme | UTF-8 BOM, `;` ayırıcı, Türkçe karakterler doğru |
 | Yedek betiği | `.sql.gz` oluşur, tablo/view/trigger/prosedür sayıları doğru |
-| Mobil 390 px | Yatay taşma yok |
+| Mobil 360–390 px | Yatay taşma yok |
 | Güvenlik başlıkları | CSP + X-Frame-Options + nosniff + HSTS (HTTPS'te) |
 
 ---
@@ -330,13 +334,29 @@ sanalokul/
 
 ## 11. Ekran görüntüleri
 
-| Ana sayfa | Öğrenci paneli |
+| Giriş ekranı (koyu) | Giriş ekranı (açık) |
 |---|---|
-| ![Ana sayfa](ekranlar/ana-sayfa.png) | ![Öğrenci paneli](ekranlar/ogrenci-panel.png) |
+| ![Giriş koyu](ekranlar/giris-koyu.png) | ![Giriş açık](ekranlar/giris-acik.png) |
 
-| Öğretim elemanı not girişi | Yönetici raporları |
+| Ana sayfa (koyu) | Ana sayfa (açık) |
 |---|---|
-| ![Not girişi](ekranlar/ogretmen-not-girisi.png) | ![Raporlar](ekranlar/yonetici-raporlar.png) |
+| ![Ana sayfa](ekranlar/ana-sayfa.png) | ![Ana sayfa açık tema](ekranlar/ana-sayfa-acik.png) |
+
+| Öğrenci paneli (koyu) | Öğrenci paneli (açık) |
+|---|---|
+| ![Öğrenci paneli](ekranlar/ogrenci-panel.png) | ![Öğrenci paneli açık tema](ekranlar/ogrenci-panel-acik.png) |
+
+| Yönetici paneli (koyu) | Yönetici raporları (koyu) |
+|---|---|
+| ![Yönetici paneli](ekranlar/yonetici-panel.png) | ![Raporlar](ekranlar/yonetici-raporlar.png) |
+
+| Öğretim elemanı not girişi (koyu) | Öğretim elemanı not girişi (açık) |
+|---|---|
+| ![Not girişi](ekranlar/ogretmen-not-girisi.png) | ![Not girişi açık tema](ekranlar/ogretmen-not-girisi-acik.png) |
+
+| Yönetici raporları (açık) |
+|---|
+| ![Raporlar açık tema](ekranlar/yonetici-raporlar-acik.png) |
 
 ---
 

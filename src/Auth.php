@@ -426,18 +426,19 @@ final class Auth
     // ------------------------------------------------------------------
 
     /**
-     * Kullanıcının kayıtlı tema tercihi: sistem | acik | koyu
+     * Kullanıcının kayıtlı tema tercihi: acik | koyu
+     * Eski "sistem" değeri koyu temaya çekilir.
      */
     public static function tema(): string
     {
         $tema = self::kullanici()['tema_tercihi'] ?? null;
 
-        return in_array($tema, ['sistem', 'acik', 'koyu'], true) ? (string) $tema : 'sistem';
+        return $tema === 'acik' ? 'acik' : 'koyu';
     }
 
     public static function temaKaydet(string $tema): bool
     {
-        if (!in_array($tema, ['sistem', 'acik', 'koyu'], true)) {
+        if (!in_array($tema, ['acik', 'koyu'], true)) {
             return false;
         }
 

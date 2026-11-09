@@ -63,16 +63,16 @@ $sunucu = $_SERVER['SERVER_SOFTWARE'] ?? 'Bilinmiyor';
     <title>Kurulum Kontrolü · <?= e(config('uygulama.ad')) ?></title>
     <style>
         :root {
-            --so-bg: #0b1120;
-            --so-bg-soft: #111a2e;
-            --so-surface: #16213a;
-            --so-border: #253552;
-            --so-text: #e6edf7;
-            --so-muted: #93a4c0;
-            --so-primary: #4f8cff;
-            --so-success: #22c55e;
-            --so-danger: #ef4444;
-            --so-warning: #f59e0b;
+            --so-bg: #0a1226;
+            --so-bg-soft: #0d1830;
+            --so-surface: #121f3a;
+            --so-border: #27395b;
+            --so-text: #eef3fc;
+            --so-muted: #a9b8d1;
+            --so-primary: #e9b949;
+            --so-success: #3ddc84;
+            --so-danger: #f26d6d;
+            --so-warning: #f0a742;
             --so-radius: 14px;
         }
 
@@ -82,8 +82,8 @@ $sunucu = $_SERVER['SERVER_SOFTWARE'] ?? 'Bilinmiyor';
             margin: 0;
             min-height: 100vh;
             background:
-                radial-gradient(1000px 500px at 15% -10%, rgba(79, 140, 255, .18), transparent 60%),
-                radial-gradient(800px 400px at 90% 0%, rgba(34, 197, 94, .10), transparent 55%),
+                radial-gradient(1700px 760px at 50% -30%, rgba(233, 185, 73, .10), transparent 70%),
+                radial-gradient(1300px 640px at 50% -12%, rgba(91, 141, 239, .10), transparent 72%),
                 var(--so-bg);
             color: var(--so-text);
             font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -114,12 +114,12 @@ $sunucu = $_SERVER['SERVER_SOFTWARE'] ?? 'Bilinmiyor';
             display: grid;
             place-items: center;
             border-radius: 12px;
-            background: linear-gradient(145deg, var(--so-primary), #2b5fd9);
-            font-weight: 700;
-            font-size: 15px;
-            letter-spacing: .5px;
-            color: #fff;
-            box-shadow: 0 8px 22px rgba(79, 140, 255, .35);
+            background: linear-gradient(145deg, #f0c45c, #c4922a);
+            font-weight: 800;
+            font-size: 11px;
+            letter-spacing: .02em;
+            color: #16223c;
+            box-shadow: 0 8px 22px rgba(196, 146, 42, .32);
         }
 
         .marka h1 { font-size: 17px; margin: 0; font-weight: 650; }
@@ -157,12 +157,13 @@ $sunucu = $_SERVER['SERVER_SOFTWARE'] ?? 'Bilinmiyor';
             border-radius: 50%;
             display: grid;
             place-items: center;
-            font-size: 21px;
-            background: rgba(34, 197, 94, .18);
-            color: var(--so-success);
+            font-size: 20px;
+            font-weight: 700;
+            background: var(--so-success);
+            color: #06210f;
         }
 
-        .durum.hata .durum-ikon { background: rgba(239, 68, 68, .18); color: var(--so-danger); }
+        .durum.hata .durum-ikon { background: var(--so-danger); color: #2b0505; }
 
         .durum h2 { margin: 0 0 3px; font-size: 19px; }
         .durum p { margin: 0; color: var(--so-muted); font-size: 14px; }
@@ -279,7 +280,7 @@ $sunucu = $_SERVER['SERVER_SOFTWARE'] ?? 'Bilinmiyor';
 
         <?php if ($herSeyYolunda): ?>
             <div class="durum">
-                <div class="durum-ikon"></div>
+                <div class="durum-ikon">✓</div>
                 <div>
                     <h2>Veritabanına bağlandı</h2>
                     <p>

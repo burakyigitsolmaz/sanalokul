@@ -24,6 +24,6 @@ declare(strict_types=1);
     </div>
 </footer>
 
-<script src="<?= e(url('assets/js/app.js')) ?>"></script>
+<script src="<?= e(varlik('assets/js/app.js')) ?>"></script>
 </body>
 </html>

@@ -52,83 +52,144 @@ require __DIR__ . '/templates/head.php';
         </button>
     </div>
 
-    <div class="giris-kart-sarmal">
-        <span class="giris-flama" aria-hidden="true"></span>
-        <section class="giris-kart" aria-labelledby="girisBaslik">
-        <div class="giris-kart-ust">
-            <span class="marka-logo">
-                <img src="<?= e(url('assets/img/logo.png')) ?>" alt="Nallıhan Meslek Yüksekokulu">
-            </span>
-            <span class="marka-metin">
-                <strong>Nallıhan MYO</strong>
-                <span>Sanal Okul · Öğrenci Bilgi Sistemi</span>
-            </span>
+    <div class="giris-duzen">
+        <aside class="giris-demo" aria-labelledby="demoBaslik">
+            <div class="giris-demo-ust">
+                <span class="giris-demo-isaret">Demo</span>
+                <h2 id="demoBaslik">Demo hesaplar</h2>
+                <p>Bir hesaba tıkla; e-posta ve şifre otomatik dolsun.</p>
+            </div>
+
+            <div class="giris-demo-sifre">
+                <span>Tüm hesapların şifresi</span>
+                <code>Sanal1234!</code>
+            </div>
+
+            <div class="giris-demo-grup">
+                <h3>Yönetici</h3>
+                <div class="giris-demo-liste">
+                    <button class="giris-demo-oge" type="button" data-demo-eposta="yonetici@ornek.local">
+                        <span class="giris-demo-satir">
+                            <span class="giris-demo-ad">Sistem Yönetici</span>
+                            <span class="demo-rol">Yönetici</span>
+                        </span>
+                        <span class="demo-adres">yonetici@ornek.local</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="giris-demo-grup">
+                <h3>Öğrenciler</h3>
+                <div class="giris-demo-liste">
+                    <button class="giris-demo-oge" type="button" data-demo-eposta="burak.solmaz@ornek.local">
+                        <span class="giris-demo-satir">
+                            <span class="giris-demo-ad">Burak Yiğit Solmaz</span>
+                            <span class="demo-rol">Öğrenci</span>
+                        </span>
+                        <span class="demo-adres">burak.solmaz@ornek.local</span>
+                    </button>
+                    <button class="giris-demo-oge" type="button" data-demo-eposta="kaan.tokatli@ornek.local">
+                        <span class="giris-demo-satir">
+                            <span class="giris-demo-ad">Kaan Tokatlı</span>
+                            <span class="demo-rol">Öğrenci</span>
+                        </span>
+                        <span class="demo-adres">kaan.tokatli@ornek.local</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="giris-demo-grup">
+                <h3>Öğretim elemanları</h3>
+                <div class="giris-demo-liste">
+                    <button class="giris-demo-oge" type="button" data-demo-eposta="ayhan.aydin@ornek.local">
+                        <span class="giris-demo-satir">
+                            <span class="giris-demo-ad">Ayhan Aydın</span>
+                            <span class="demo-rol">Öğretim elemanı</span>
+                        </span>
+                        <span class="demo-adres">ayhan.aydin@ornek.local</span>
+                    </button>
+                    <button class="giris-demo-oge" type="button" data-demo-eposta="ufuk.tanyeri@ornek.local">
+                        <span class="giris-demo-satir">
+                            <span class="giris-demo-ad">Ufuk Tanyeri</span>
+                            <span class="demo-rol">Öğretim elemanı</span>
+                        </span>
+                        <span class="demo-adres">ufuk.tanyeri@ornek.local</span>
+                    </button>
+                    <button class="giris-demo-oge" type="button" data-demo-eposta="salih.erdurucan@ornek.local">
+                        <span class="giris-demo-satir">
+                            <span class="giris-demo-ad">Salih Erdurucan</span>
+                            <span class="demo-rol">Öğretim elemanı</span>
+                        </span>
+                        <span class="demo-adres">salih.erdurucan@ornek.local</span>
+                    </button>
+                    <button class="giris-demo-oge" type="button" data-demo-eposta="guney.ugurlu@ornek.local">
+                        <span class="giris-demo-satir">
+                            <span class="giris-demo-ad">Güney Uğurlu</span>
+                            <span class="demo-rol">Öğretim elemanı</span>
+                        </span>
+                        <span class="demo-adres">guney.ugurlu@ornek.local</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <div class="giris-kart-sarmal">
+            <span class="giris-flama" aria-hidden="true"></span>
+            <section class="giris-kart" aria-labelledby="girisBaslik">
+                <div class="giris-kart-ust">
+                    <span class="marka-logo">
+                        <img src="<?= e(url('assets/img/logo.png')) ?>" alt="Nallıhan Meslek Yüksekokulu">
+                    </span>
+                    <span class="marka-metin">
+                        <strong>Nallıhan MYO</strong>
+                        <span>Sanal Okul · Öğrenci Bilgi Sistemi</span>
+                    </span>
+                </div>
+
+                <h1 id="girisBaslik">Tekrar hoş geldiniz</h1>
+                <p class="alt-metin">Devam etmek için okul e-posta adresinizle giriş yapın.</p>
+
+                <?php foreach ($hatalar as $hata): ?>
+                    <div class="uyari uyari-hata" role="alert">
+                        <span class="uyari-ikon">✕</span>
+                        <span><?= e($hata) ?></span>
+                    </div>
+                <?php endforeach; ?>
+
+                <form method="post" action="<?= e(url('giris.php')) ?>" data-tek-gonderim autocomplete="on">
+                    <?= Auth::csrfAlani() ?>
+
+                    <div class="form-grup">
+                        <label class="form-etiket" for="eposta">E-posta</label>
+                        <input class="form-girdi" type="email" id="eposta" name="eposta"
+                               value="<?= e($eposta) ?>" placeholder="ornek@ornek.local"
+                               required autofocus autocomplete="username">
+                    </div>
+
+                    <div class="form-grup">
+                        <label class="form-etiket" for="sifre">Şifre</label>
+                        <input class="form-girdi" type="password" id="sifre" name="sifre"
+                               placeholder="••••••••" required autocomplete="current-password">
+                    </div>
+
+                    <div class="form-satir">
+                        <label class="onay-kutu">
+                            <input type="checkbox" name="hatirla" value="1">
+                            Beni hatırla
+                        </label>
+                        <span class="metin-kucuk metin-silik">Şifremi unuttum (demo)</span>
+                    </div>
+
+                    <button class="dugme dugme-birincil dugme-tam" type="submit">Giriş Yap</button>
+                </form>
+
+                <div class="giris-alt">
+                    Bu uygulama <strong>ders projesi</strong> olarak geliştirilmiştir; resmî bir uygulama değildir.
+                    Girilen bilgiler demo amaçlıdır.
+                    <br><a href="<?= e(url('')) ?>">← Ana sayfaya dön</a>
+                </div>
+            </section>
         </div>
-
-        <h1 id="girisBaslik">Tekrar hoş geldiniz</h1>
-        <p class="alt-metin">Devam etmek için okul e-posta adresinizle giriş yapın.</p>
-
-        <?php foreach ($hatalar as $hata): ?>
-            <div class="uyari uyari-hata" role="alert">
-                <span class="uyari-ikon">✕</span>
-                <span><?= e($hata) ?></span>
-            </div>
-        <?php endforeach; ?>
-
-        <form method="post" action="<?= e(url('giris.php')) ?>" data-tek-gonderim autocomplete="on">
-            <?= Auth::csrfAlani() ?>
-
-            <div class="form-grup">
-                <label class="form-etiket" for="eposta">E-posta</label>
-                <input class="form-girdi" type="email" id="eposta" name="eposta"
-                       value="<?= e($eposta) ?>" placeholder="ornek@ornek.local"
-                       required autofocus autocomplete="username">
-            </div>
-
-            <div class="form-grup">
-                <label class="form-etiket" for="sifre">Şifre</label>
-                <input class="form-girdi" type="password" id="sifre" name="sifre"
-                       placeholder="••••••••" required autocomplete="current-password">
-            </div>
-
-            <div class="form-satir">
-                <label class="onay-kutu">
-                    <input type="checkbox" name="hatirla" value="1">
-                    Beni hatırla
-                </label>
-                <span class="metin-kucuk metin-silik">Şifremi unuttum (demo)</span>
-            </div>
-
-            <button class="dugme dugme-birincil dugme-tam" type="submit">Giriş Yap</button>
-        </form>
-
-        <div class="demo-kutu">
-            <div class="demo-baslik">
-                <strong>Demo hesaplar</strong>
-                <span>şifre: <code>Sanal1234!</code></span>
-            </div>
-            <div class="demo-liste">
-                <button class="demo-oge" type="button" data-demo-eposta="burak.solmaz@ornek.local">
-                    <span class="demo-rol">Öğrenci</span>
-                    <span class="demo-adres">burak.solmaz@ornek.local</span>
-                </button>
-                <button class="demo-oge" type="button" data-demo-eposta="ayhan.aydin@ornek.local">
-                    <span class="demo-rol">Öğretim elemanı</span>
-                    <span class="demo-adres">ayhan.aydin@ornek.local</span>
-                </button>
-                <button class="demo-oge" type="button" data-demo-eposta="yonetici@ornek.local">
-                    <span class="demo-rol">Yönetici</span>
-                    <span class="demo-adres">yonetici@ornek.local</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="giris-alt">
-            Bu uygulama <strong>ders projesi</strong> olarak geliştirilmiştir; resmî bir uygulama değildir.
-            Girilen bilgiler demo amaçlıdır.
-            <br><a href="<?= e(url('')) ?>">← Ana sayfaya dön</a>
-        </div>
-        </section>
     </div>
 </div>
 

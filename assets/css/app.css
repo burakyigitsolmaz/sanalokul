@@ -8,6 +8,7 @@
    --------------------------------------------------------------------- */
 :root,
 :root[data-tema="koyu"] {
+    color-scheme: dark;
     --bg:            #0a1226;
     --bg-yumusak:    #0d1830;
     --yuzey:         #121f3a;
@@ -47,6 +48,7 @@
 }
 
 :root[data-tema="acik"] {
+    color-scheme: light;
     --bg:            #f2f4f8;
     --bg-yumusak:    #e9eef5;
     --yuzey:         #ffffff;
@@ -1325,6 +1327,156 @@ body.cekmece-acik {
     z-index: 3;
 }
 
+/* İki sütun: solda demo hesaplar, sağda giriş formu */
+.giris-duzen {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(300px, 350px) minmax(0, 458px);
+    gap: 26px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 880px;
+}
+
+/* Yarı saydam demo kartı */
+.giris-demo {
+    padding: 22px 22px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 22px;
+    background: rgba(17, 33, 59, 0.58);
+    box-shadow: 0 24px 60px rgba(2, 8, 20, 0.35);
+    -webkit-backdrop-filter: blur(16px) saturate(125%);
+    backdrop-filter: blur(16px) saturate(125%);
+}
+
+:root[data-tema="acik"] .giris-demo {
+    background: rgba(255, 255, 255, 0.62);
+    border-color: rgba(30, 63, 115, 0.14);
+    box-shadow: 0 22px 50px rgba(16, 32, 58, 0.12);
+}
+
+.giris-demo-ust {
+    margin-bottom: 13px;
+}
+
+.giris-demo-isaret {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: var(--vurgu-zemin);
+    color: var(--vurgu-acik);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+:root[data-tema="acik"] .giris-demo-isaret {
+    color: var(--vurgu-koyu);
+}
+
+.giris-demo-ust h2 {
+    margin: 8px 0 4px;
+    font-size: 19px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.giris-demo-ust p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--metin-soluk);
+}
+
+.giris-demo-sifre {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 9px 12px;
+    border: 1px solid var(--kenar-yumusak);
+    border-radius: 11px;
+    background: var(--vurgu-zemin);
+    font-size: 11.5px;
+    color: var(--metin-soluk);
+}
+
+.giris-demo-sifre code {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--vurgu-acik);
+}
+
+:root[data-tema="acik"] .giris-demo-sifre code {
+    color: var(--vurgu-koyu);
+}
+
+.giris-demo-grup + .giris-demo-grup {
+    margin-top: 12px;
+}
+
+.giris-demo-grup h3 {
+    margin: 0 0 6px 2px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--metin-silik);
+}
+
+.giris-demo-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.giris-demo-oge {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.055);
+    color: var(--metin);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+:root[data-tema="acik"] .giris-demo-oge {
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.giris-demo-oge:hover,
+.giris-demo-oge:focus-visible,
+.giris-demo-oge.secili {
+    border-color: var(--vurgu);
+    background: var(--vurgu-zemin);
+}
+
+.giris-demo-oge:active {
+    transform: scale(0.99);
+}
+
+.giris-demo-satir {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.giris-demo-ad {
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
 /* Ortadaki kart */
 .giris-kart {
     position: relative;
@@ -1414,79 +1566,10 @@ body.cekmece-acik {
     line-height: 1.75;
 }
 
-/* Demo hesap listesi (tıklanınca e-postayı doldurur) */
-.demo-kutu {
-    margin-top: 18px;
-    padding: 14px;
-    border-radius: 14px;
-    border: 1px dashed var(--kenar);
-    background: var(--yuzey-2);
-    font-size: 12.5px;
-    color: var(--metin-soluk);
-}
-
-.demo-baslik {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.demo-baslik strong {
-    color: var(--metin);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-}
-
-.demo-baslik span {
-    font-size: 11.5px;
-    color: var(--metin-silik);
-}
-
-.demo-baslik code {
-    color: var(--vurgu-koyu);
-    font-weight: 700;
-}
-
-:root[data-tema="koyu"] .demo-baslik code {
-    color: var(--vurgu-acik);
-}
-
-.demo-liste {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.demo-oge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding: 8px 10px;
-    border-radius: 9px;
-    border: 1px solid transparent;
-    background: var(--yuzey);
-    color: var(--metin);
-    font-family: inherit;
-    font-size: 12px;
-    text-align: left;
-    cursor: pointer;
-    transition: border-color 0.15s ease, background 0.15s ease;
-}
-
-.demo-oge:hover,
-.demo-oge:focus-visible {
-    border-color: var(--vurgu);
-    background: var(--vurgu-zemin);
-}
-
+/* Demo hesap satırındaki rol ve adres etiketleri */
 .demo-rol {
     flex: 0 0 auto;
-    font-size: 9.5px;
+    font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -1501,33 +1584,110 @@ body.cekmece-acik {
 }
 
 .demo-adres {
-    color: var(--metin-soluk);
+    color: var(--metin-silik);
     font-family: ui-monospace, Consolas, "Courier New", monospace;
-    font-size: 11.5px;
+    font-size: 10.5px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
+@media (max-width: 900px) {
+    .giris-duzen {
+        grid-template-columns: minmax(0, 458px);
+        gap: 18px;
+        max-width: 458px;
+    }
+
+    .giris-demo {
+        order: 2;
+    }
+}
+
 @media (max-width: 520px) {
+    /* Üstte tema düğmesine yer aç */
     .giris-sayfa {
-        padding: 22px 14px;
+        padding: 64px 14px 26px;
+    }
+
+    .giris-tema {
+        top: 14px;
+        right: 14px;
     }
 
     .giris-kart {
-        padding: 28px 20px 22px;
+        padding: 26px 20px 22px;
         border-radius: 20px;
     }
 
+    /* Flama mobilde kartın etrafında çerçeve gibi kalıyor */
     .giris-flama {
-        top: -4px;
-        width: calc(100% + 24px);
-        height: calc(100% - 8px);
-        clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 12px 100%);
+        display: none;
+    }
+
+    /* Logo tek başına okunur boyutta, tekrar eden başlık gizli */
+    .giris-kart-ust {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin: 0 0 20px;
+    }
+
+    .giris-kart-ust .marka-logo {
+        height: auto;
+        max-width: 100%;
+        padding: 8px 12px;
+        box-shadow: 0 2px 8px rgba(2, 8, 20, 0.12);
+    }
+
+    .giris-kart-ust .marka-logo img {
+        height: auto;
+        width: 100%;
+        max-width: 208px;
+    }
+
+    .giris-kart-ust .marka-metin strong {
+        display: none;
+    }
+
+    .giris-kart-ust .marka-metin span {
+        display: block;
+        font-size: 9.5px;
+        letter-spacing: 0.11em;
     }
 
     .giris-kart h1 {
         font-size: 22px;
+    }
+
+    /* Demo kartı daha kompakt */
+    .giris-demo {
+        padding: 16px 14px 12px;
+        border-radius: 18px;
+    }
+
+    .giris-demo-ust h2 {
+        font-size: 18px;
+    }
+
+    .giris-demo-liste {
+        gap: 4px;
+    }
+
+    .giris-demo-grup + .giris-demo-grup {
+        margin-top: 10px;
+    }
+
+    .giris-demo-oge {
+        padding: 7px 9px;
+    }
+
+    .giris-demo-ad {
+        font-size: 12px;
+    }
+
+    .demo-adres {
+        font-size: 10px;
     }
 }
 
@@ -1790,18 +1950,18 @@ table.tablo tbody tr:hover {
     .ust-ic { gap: 8px; }
     .ust-sag { gap: 6px; }
 
-    .marka-logo {
-        max-width: 94px;
-        height: 34px;
-        min-width: 34px;
+    /* Üst çubukta logo sığmıyor; yazı marka adını taşıyor */
+    .ust-cubuk .marka-logo {
+        display: none;
     }
 
-    .marka-logo img {
-        height: 18px;
-        max-width: 82px;
-    }
+    .ust-cubuk .marka-metin strong { font-size: 14px; }
 
-    .marka-metin strong { font-size: 13.5px; }
+    .ust-cubuk .marka-metin span {
+        display: block;
+        font-size: 9px;
+        letter-spacing: 0.1em;
+    }
 
     .tema-dugme,
     .menu-dugme {
@@ -3140,6 +3300,135 @@ table.tablo tbody tr:hover {
     .rapor-bar-satir {
         grid-template-columns: 30px minmax(0, 1fr) 34px 50px;
         gap: 7px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Veritabanı durumu (yönetici)
+   --------------------------------------------------------------------- */
+.veritabani-kod {
+    font-family: "Cascadia Code", "Consolas", ui-monospace, monospace;
+    font-size: 12.5px;
+    letter-spacing: -0.01em;
+}
+
+.veritabani-sayi {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+}
+
+.veritabani-er {
+    overflow-x: auto;
+    padding: 10px;
+    border: 1px solid var(--kenar);
+    border-radius: 14px;
+    background: var(--yuzey-2);
+}
+
+.veritabani-er a {
+    display: block;
+}
+
+.veritabani-er img {
+    display: block;
+    width: 100%;
+    min-width: 880px;
+    height: auto;
+    border-radius: 8px;
+}
+
+@media (max-width: 720px) {
+    .veritabani-er img {
+        min-width: 760px;
+    }
+}
+
+/* Büyütme penceresi (dialog) */
+.er-buyut {
+    width: min(1720px, 96vw);
+    max-width: 96vw;
+    max-height: 92vh;
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--kenar);
+    border-radius: 16px;
+    background: var(--yuzey);
+    color: var(--metin);
+    box-shadow: var(--golge);
+    overflow: hidden;
+}
+
+.er-buyut::backdrop {
+    background: rgba(4, 12, 26, 0.8);
+    backdrop-filter: blur(3px);
+}
+
+.er-buyut-bas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--kenar-yumusak);
+}
+
+.er-buyut-bas strong {
+    font-size: 14px;
+}
+
+.er-buyut-eylem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.er-buyut-kapat {
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--kenar);
+    border-radius: 10px;
+    background: var(--yuzey-2);
+    color: var(--metin);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.er-buyut-kapat:hover {
+    background: var(--vurgu-zemin);
+    color: var(--vurgu-acik);
+}
+
+.er-buyut-govde {
+    max-height: calc(92vh - 60px);
+    overflow: auto;
+    padding: 12px;
+    background: var(--yuzey-2);
+}
+
+.er-buyut-govde img {
+    display: block;
+    width: max(100%, 1000px);
+    max-width: none;
+    height: auto;
+    border-radius: 8px;
+}
+
+body.er-buyut-acik {
+    overflow: hidden;
+}
+
+@media (max-width: 720px) {
+    .er-buyut {
+        max-width: 98vw;
+    }
+
+    .er-buyut-bas strong {
+        font-size: 13px;
+    }
+
+    .er-buyut-govde img {
+        width: 1000px;
     }
 }
 

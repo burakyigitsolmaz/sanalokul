@@ -2,8 +2,9 @@
 -- Nallıhan MYO Sanal Okul - Veritabanı Şeması
 -- Dosya   : 01_schema.sql
 -- Sürüm   : 1.0
--- Not     : Boş bir veritabanında sırayla çalıştırılır (01 -> 05).
+-- Not     : Boş bir veritabanında sırayla çalıştırılır (00 -> 05).
 --           Tüm tablolar InnoDB, karakter seti utf8mb4 / utf8mb4_turkish_ci.
+--           Performans indeksleri ve tema tercihi bu dosyada tanımlıdır.
 -- =====================================================================
 
 SET NAMES utf8mb4;
@@ -74,14 +75,14 @@ CREATE TABLE kullanicilar (
     eposta          VARCHAR(120)     NOT NULL,
     sifre_hash      VARCHAR(255)     NOT NULL,
     telefon         VARCHAR(20)          NULL,
-    tema_tercihi    ENUM('sistem', 'acik', 'koyu') NOT NULL DEFAULT 'sistem',
+    tema_tercihi    ENUM('acik', 'koyu') NOT NULL DEFAULT 'koyu',
     aktif           TINYINT(1)       NOT NULL DEFAULT 1,
     son_giris       DATETIME             NULL,
     olusturma_zamani TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     UNIQUE KEY uq_kullanici_numara (numara),
     UNIQUE KEY uq_kullanici_eposta (eposta),
-    KEY idx_kullanici_rol (rol_id),
+    KEY idx_kullanici_rol_aktif (rol_id, aktif),
     CONSTRAINT fk_kullanici_rol FOREIGN KEY (rol_id) REFERENCES roller (id)
         ON UPDATE CASCADE ON DELETE RESTRICT
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_turkish_ci;
@@ -144,7 +145,7 @@ CREATE TABLE ders_acilislari (
     PRIMARY KEY (id),
     UNIQUE KEY uq_ders_acilisi (ders_id, donem_id, sube),
     KEY idx_da_donem (donem_id),
-    KEY idx_da_hoca (ogretim_elemani_id),
+    KEY idx_da_hoca_donem (ogretim_elemani_id, donem_id),
     CONSTRAINT fk_da_ders FOREIGN KEY (ders_id) REFERENCES dersler (id)
         ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT fk_da_donem FOREIGN KEY (donem_id) REFERENCES donemler (id)
@@ -161,8 +162,7 @@ CREATE TABLE ders_kayitlari (
     durum           ENUM('aktif', 'birakti', 'tamamlandi') NOT NULL DEFAULT 'aktif',
     PRIMARY KEY (id),
     UNIQUE KEY uq_dk_ogrenci_ders (ogrenci_id, ders_acilis_id),
-    KEY idx_dk_ders (ders_acilis_id),
-    KEY idx_dk_durum (durum),
+    KEY idx_dk_ders_durum (ders_acilis_id, durum),
     CONSTRAINT fk_dk_ogrenci FOREIGN KEY (ogrenci_id) REFERENCES kullanicilar (id)
         ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT fk_dk_ders_acilisi FOREIGN KEY (ders_acilis_id) REFERENCES ders_acilislari (id)
@@ -210,7 +210,7 @@ CREATE TABLE duyurular (
     yayin_tarihi    DATETIME         NOT NULL DEFAULT CURRENT_TIMESTAMP,
     bitis_tarihi    DATETIME             NULL,
     PRIMARY KEY (id),
-    KEY idx_duyuru_ders (ders_acilis_id),
+    KEY idx_duyuru_hedef_tarih (ders_acilis_id, yayin_tarihi),
     KEY idx_duyuru_yazar (yazar_id),
     KEY idx_duyuru_tarih (yayin_tarihi),
     CONSTRAINT fk_duyuru_ders_acilisi FOREIGN KEY (ders_acilis_id) REFERENCES ders_acilislari (id)
@@ -248,7 +248,7 @@ CREATE TABLE teslimler (
     degerlendirme_zamani DATETIME            NULL,
     PRIMARY KEY (id),
     UNIQUE KEY uq_teslim_odev_ogrenci (odev_id, ogrenci_id),
-    KEY idx_teslim_ogrenci (ogrenci_id),
+    KEY idx_teslim_ogrenci_zaman (ogrenci_id, teslim_zamani),
     CONSTRAINT fk_teslim_odev FOREIGN KEY (odev_id) REFERENCES odevler (id)
         ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT fk_teslim_ogrenci FOREIGN KEY (ogrenci_id) REFERENCES kullanicilar (id)
@@ -286,6 +286,7 @@ CREATE TABLE islem_loglari (
     PRIMARY KEY (id),
     KEY idx_log_kullanici (kullanici_id),
     KEY idx_log_zaman (zaman),
+    KEY idx_log_tablo_zaman (tablo_adi, zaman),
     CONSTRAINT fk_log_kullanici FOREIGN KEY (kullanici_id) REFERENCES kullanicilar (id)
         ON UPDATE CASCADE ON DELETE SET NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_turkish_ci;

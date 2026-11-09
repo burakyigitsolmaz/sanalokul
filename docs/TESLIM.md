@@ -55,26 +55,18 @@ C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\02_views.sql
 C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\03_triggers.sql
 C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\04_procedures.sql
 C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\05_seed.sql
-C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\06_seed_faz3.sql
-C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\07_rapor.sql
-C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\08_performans.sql
-C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\09_tema.sql
-C:\xampp\mysql\bin\mysql.exe -u root sanalokul < database\10_ogrenci_temizlik.sql
 ```
+
+Altı dosya sırayla çalıştırılır: `00 → 01 → 02 → 03 → 04 → 05`.
 
 | Dosya | İçerik |
 |---|---|
 | `00_kurulum.sql` | Veritabanı + `sanalokul_app` kullanıcısı + izinler |
-| `01_schema.sql` | 20 tablo, kısıtlar, indeksler |
-| `02_views.sql` | Öğrenci not özeti, başarı istatistiği, günün programı |
+| `01_schema.sql` | 20 tablo, kısıtlar, bileşik indeksler, tema tercihi |
+| `02_views.sql` | 8 görünüm: not özeti, başarı, program, doluluk, yük, dönem, harf, bölüm |
 | `03_triggers.sql` | Ortalama/harf notu hesabı, kontenjan ve log tetikleyicileri |
-| `04_procedures.sql` | Derse kayıt, dönem ortalaması |
-| `05_seed.sql` | Bölüm, dönem, ders, kullanıcı, not çekirdek verisi |
-| `06_seed_faz3.sql` | Program, ödev, teslim, duyuru örnekleri |
-| `07_rapor.sql` | Rapor view'leri + `sp_donem_raporu`, `sp_riskli_ogrenciler` |
-| `08_performans.sql` | Rapor ve panel sorguları için bileşik indeksler |
-| `09_tema.sql` | Tema tercihini iki moda indirir (`acik`, `koyu`) |
-| `10_ogrenci_temizlik.sql` | Demo öğrenci sayısını ikiye indirir (Burak, Kaan) |
+| `04_procedures.sql` | Derse kayıt, dönem ortalaması, dönem raporu, riskli öğrenciler |
+| `05_seed.sql` | Demo veri: bölüm, dönem, ders, kullanıcı, not, ödev, duyuru, menü |
 
 ### 2.4. Uygulama ayarı
 
@@ -143,6 +135,8 @@ Tüm demo hesaplar `@ornek.local` adresini kullanır.
 - Derse öğrenci atama (`sp_derse_kayit_ol`: kontenjan, çakışma, mükerrer kontrol)
 - Genel duyuru yönetimi
 - İşlem logları (arama + sayfalama)
+- Veritabanı durumu: canlı tablo sayıları, view/trigger/prosedür listesi,
+  son giriş denemeleri ve büyütülebilir ER diyagramı
 - Veri senkronizasyonu: yemek menüsü (XLSX) + kampüs haberleri (REST API)
 - **Raporlar:** dönem özeti, ders doluluğu/başarısı, harf notu dağılımı,
   bölüm özeti, öğretim elemanı yükü, akademik risk listesi, CSV indirme, yazdırma
@@ -239,7 +233,7 @@ erDiagram
 
 ## 7. Performans
 
-`database/08_performans.sql` ile eklenen bileşik indeksler:
+`database/01_schema.sql` içinde tanımlı bileşik indeksler:
 
 | İndeks | Tablo | Kullanım |
 |---|---|---|
@@ -357,6 +351,14 @@ sanalokul/
 | Yönetici raporları (açık) |
 |---|
 | ![Raporlar açık tema](ekranlar/yonetici-raporlar-acik.png) |
+
+| Veritabanı sayfası (koyu) | ER diyagramı büyütme |
+|---|---|
+| ![Veritabanı sayfası](ekranlar/yonetici-veritabani.png) | ![ER diyagramı büyütme](ekranlar/yonetici-veritabani-er.png) |
+
+| Veritabanı sayfası — mobil |
+|---|
+| ![Veritabanı mobil](ekranlar/yonetici-veritabani-mobil.png) |
 
 ---
 

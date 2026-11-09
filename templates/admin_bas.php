@@ -26,6 +26,7 @@ $panelMenu = [
     ['anahtar' => 'raporlar',    'ad' => 'Raporlar',          'yol' => url('admin/raporlar.php')],
     ['anahtar' => 'duyurular',   'ad' => 'Duyurular',         'yol' => url('admin/duyurular.php')],
     ['anahtar' => 'loglar',      'ad' => 'İşlem Logları',     'yol' => url('admin/loglar.php')],
+    ['anahtar' => 'veritabani',  'ad' => 'Veritabanı',        'yol' => url('admin/veritabani.php')],
     ['anahtar' => 'csv',         'ad' => 'CSV Aktarma',       'yol' => url('admin/csv.php')],
     ['anahtar' => 'senkron',     'ad' => 'Veri Senkronu',     'yol' => url('admin/senkron.php')],
 ];

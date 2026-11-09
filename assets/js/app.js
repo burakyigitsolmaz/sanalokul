@@ -82,12 +82,15 @@
     });
 
     // ------------------------------------------------------------------
-    // Giriş ekranı: demo hesap çipleri (tıklayınca e-postayı doldurur)
+    // Giriş ekranı: demo hesap kartları (tıklayınca alanları doldurur)
     // ------------------------------------------------------------------
+    var DEMO_SIFRE = 'Sanal1234!';
+
     document.querySelectorAll('[data-demo-eposta]').forEach(function (dugme) {
         dugme.addEventListener('click', function () {
             var eposta = document.getElementById('eposta');
             var sifre = document.getElementById('sifre');
+            var gonder = document.querySelector('form[data-tek-gonderim] button[type="submit"]');
 
             if (eposta) {
                 eposta.value = dugme.getAttribute('data-demo-eposta') || '';
@@ -95,7 +98,16 @@
             }
 
             if (sifre) {
-                sifre.focus();
+                sifre.value = DEMO_SIFRE;
+                sifre.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+
+            document.querySelectorAll('.giris-demo-oge').forEach(function (oge) {
+                oge.classList.toggle('secili', oge === dugme);
+            });
+
+            if (gonder) {
+                gonder.focus();
             }
         });
     });
@@ -261,4 +273,35 @@
             dugme.setAttribute('aria-expanded', acik ? 'true' : 'false');
         });
     });
+
+    // ------------------------------------------------------------------
+    // ER diyagramını sayfa içinde büyüt
+    // ------------------------------------------------------------------
+    var erPencere = document.getElementById('erBuyut');
+
+    if (erPencere && typeof erPencere.showModal === 'function') {
+        document.querySelectorAll('[data-er-buyut]').forEach(function (baglanti) {
+            baglanti.addEventListener('click', function (olay) {
+                olay.preventDefault();
+                erPencere.showModal();
+                document.body.classList.add('er-buyut-acik');
+            });
+        });
+
+        document.querySelectorAll('[data-er-kapat]').forEach(function (dugme) {
+            dugme.addEventListener('click', function () {
+                erPencere.close();
+            });
+        });
+
+        erPencere.addEventListener('click', function (olay) {
+            if (olay.target === erPencere) {
+                erPencere.close();
+            }
+        });
+
+        erPencere.addEventListener('close', function () {
+            document.body.classList.remove('er-buyut-acik');
+        });
+    }
 })();

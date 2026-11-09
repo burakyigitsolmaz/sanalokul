@@ -148,4 +148,74 @@ BEGIN
       AND dk.durum = 'aktif';
 END$$
 
+-- ---------------------------------------------------------------------
+-- 3) sp_donem_raporu
+--    Bir dönemin ders bazlı raporunu tek sonuç kümesi olarak döndürür.
+--    v_ders_doluluk + v_ders_basari_istatistik birleşimini kullanır.
+--
+--    Kullanım:
+--      CALL sp_donem_raporu(3);
+-- ---------------------------------------------------------------------
+DROP PROCEDURE IF EXISTS sp_donem_raporu$$
+CREATE PROCEDURE sp_donem_raporu(IN p_donem_id TINYINT UNSIGNED)
+BEGIN
+    SELECT
+        vd.ders_kodu,
+        vd.ders_adi,
+        vd.sube,
+        vd.ogretim_elemani,
+        vd.kontenjan,
+        vd.kayitli,
+        vd.doluluk_yuzdesi,
+        COALESCE(vb.notu_girilen, 0)  AS notu_girilen,
+        vb.ortalama,
+        COALESCE(vb.gecen, 0)         AS gecen,
+        COALESCE(vb.kalan, 0)         AS kalan,
+        vb.basari_yuzdesi
+    FROM v_ders_doluluk vd
+        LEFT JOIN v_ders_basari_istatistik vb
+            ON vb.ders_acilis_id = vd.ders_acilis_id
+    WHERE vd.donem_id = p_donem_id
+    ORDER BY vd.ders_kodu, vd.sube;
+END$$
+
+-- ---------------------------------------------------------------------
+-- 4) sp_riskli_ogrenciler
+--    Dönem ortalaması eşiğin altında kalan öğrencileri listeler.
+--    Akademik risk raporunu besler.
+--
+--    Kullanım:
+--      CALL sp_riskli_ogrenciler(3, 60);
+-- ---------------------------------------------------------------------
+DROP PROCEDURE IF EXISTS sp_riskli_ogrenciler$$
+CREATE PROCEDURE sp_riskli_ogrenciler(
+    IN p_donem_id TINYINT UNSIGNED,
+    IN p_esik     DECIMAL(5, 2)
+)
+BEGIN
+    SELECT
+        k.numara                             AS ogrenci_no,
+        CONCAT(k.ad, ' ', k.soyad)           AS ogrenci,
+        COALESCE(b.ad, '-')                  AS bolum,
+        COALESCE(op.sinif, 0)                AS sinif,
+        COUNT(DISTINCT dk.id)                AS ders_sayisi,
+        ROUND(AVG(n.ortalama), 2)            AS ortalama,
+        SUM(CASE WHEN n.ortalama IS NOT NULL AND n.ortalama < 60 THEN 1 ELSE 0 END) AS kalan_ders,
+        SUM(CASE WHEN n.ortalama >= 60 THEN 1 ELSE 0 END) AS gecen_ders
+    FROM ders_kayitlari dk
+        JOIN kullanicilar k     ON k.id = dk.ogrenci_id
+        JOIN ders_acilislari da ON da.id = dk.ders_acilis_id
+        LEFT JOIN notlar n      ON n.ders_kaydi_id = dk.id
+        LEFT JOIN ogrenci_profilleri op ON op.kullanici_id = k.id
+        LEFT JOIN bolumler b    ON b.id = op.bolum_id
+    WHERE dk.durum = 'aktif'
+      AND da.donem_id = p_donem_id
+      AND k.aktif = 1
+    GROUP BY k.id, k.numara, k.ad, k.soyad, b.ad, op.sinif
+    HAVING AVG(n.ortalama) < p_esik
+        OR SUM(CASE WHEN n.ortalama IS NOT NULL AND n.ortalama < 60 THEN 1 ELSE 0 END) > 0
+    ORDER BY ortalama ASC, k.numara
+    LIMIT 20;
+END$$
+
 DELIMITER ;

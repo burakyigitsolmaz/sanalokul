@@ -67,8 +67,8 @@ INSERT INTO ogretim_elemani_profilleri (kullanici_id, bolum_id, unvan) VALUES
     (5, 4, 'Öğr. Gör.');   -- Elektrik ve Enerji Bölümü kadrosu, Bilgisayar Programcılığı'nda derse giriyor
 
 INSERT INTO ogrenci_profilleri (kullanici_id, bolum_id, sinif, giris_yili) VALUES
-    (6, 1, 1, 2026),
-    (7, 1, 1, 2026);
+    (6, 1, 2, 2026),
+    (7, 1, 2, 2026);
 
 -- ---------------------------------------------------------------------
 -- Dersler (Bilgisayar Programcılığı)
@@ -86,13 +86,13 @@ INSERT INTO dersler (id, bolum_id, kod, ad, kredi, akts, zorunlu_mu, sinif) VALU
     (8,  1, 'NBP108', 'Siber Güvenliğe Giriş',              3, 4, 1, 1),
     (9,  1, 'NBP110', 'Açık Kaynak Yazılımlar',             2, 3, 0, 1),
     -- 2. sınıf güz
-    (10, 1, 'NBP201', 'Nesne Tabanlı Programlama',          4, 5, 1, 2),
-    (11, 1, 'NBP203', 'Veri Tabanı Uygulamaları',           4, 5, 1, 2),
-    (12, 1, 'NBP205', 'Sunucu İşletim Sistemleri',          3, 4, 1, 2),
-    (13, 1, 'NBP207', 'Mikrobilgisayar ve Assembler',       3, 4, 1, 2),
-    (14, 1, 'NBP209', 'Görüntü İşlemenin Temelleri',        3, 4, 0, 2),
-    (15, 1, 'NBP211', 'İşletme Yönetimi I',                 2, 3, 1, 2),
-    (16, 1, 'NBP213', 'Dönem Projesi',                      2, 4, 1, 2);
+    (10, 1, 'NMS265', 'Yapay Zeka',                   4, 5, 1, 2),
+    (11, 1, 'NMS239', 'Veri Tabanı Uygulamaları',     4, 5, 1, 2),
+    (12, 1, 'NMS269', 'Sunucu Tarafı Web Programlama',3, 4, 1, 2),
+    (13, 1, 'NMS227', 'Mikrobilgisayar ve Assembler', 3, 4, 1, 2),
+    (14, 1, 'NMS233', 'Görüntü İşlemenin Temelleri',  3, 4, 0, 2),
+    (15, 1, 'NSS203', 'İşletme Yönetimi',             2, 3, 1, 2),
+    (16, 1, 'NBP253', 'Dönem Projesi',                2, 4, 1, 2);
 
 -- ---------------------------------------------------------------------
 -- Ders açılışları
@@ -110,13 +110,13 @@ INSERT INTO ders_acilislari (id, ders_id, donem_id, ogretim_elemani_id, sube, ko
     (7,  2,  3, 3, 'A', 40),   -- Web Tasarım Temelleri - Ufuk Tanyeri
     (8,  3,  3, 4, 'A', 40),   -- Grafik ve Animasyon - Salih Erdurucan
     (9,  4,  3, 4, 'A', 40),   -- Bilgisayar Donanımı ve Ağ - Salih Erdurucan
-    (10, 10, 3, 4, 'A', 35),   -- Nesne Tabanlı Programlama - Salih Erdurucan
+    (10, 10, 3, 5, 'A', 35),   -- Yapay Zeka - Güney Uğurlu
     (11, 11, 3, 3, 'A', 35),   -- Veri Tabanı Uygulamaları - Ufuk Tanyeri
-    (12, 12, 3, 4, 'A', 35),   -- Sunucu İşletim Sistemleri - Salih Erdurucan
-    (13, 13, 3, 3, 'A', 35),   -- Mikrobilgisayar ve Assembler - Ufuk Tanyeri
+    (12, 12, 3, 3, 'A', 35),   -- Sunucu Tarafı Web Programlama - Ufuk Tanyeri
+    (13, 13, 3, 5, 'A', 35),   -- Mikrobilgisayar ve Assembler - Güney Uğurlu
     (14, 14, 3, 3, 'A', 30),   -- Görüntü İşlemenin Temelleri - Ufuk Tanyeri
-    (15, 15, 3, 4, 'A', 40),   -- İşletme Yönetimi I - Salih Erdurucan
-    (16, 16, 3, 2, 'A', 30);   -- Dönem Projesi - Ayhan Aydın
+    (15, 15, 3, 4, 'A', 40),   -- İşletme Yönetimi - Salih Erdurucan
+    (16, 16, 3, 4, 'A', 30);   -- Dönem Projesi - Salih Erdurucan
 
 -- ---------------------------------------------------------------------
 -- Haftalık ders programı (aktif dönem) - gerçek programdan alınmıştır
@@ -126,19 +126,20 @@ INSERT INTO ders_programi (ders_acilis_id, gun, baslangic_saati, bitis_saati, de
     -- 1. sınıf
     (6,  1, '15:30:00', '17:30:00', 'Bilgisayar Laboratuvarı 1'),
     (6,  3, '15:30:00', '17:30:00', 'Bilgisayar Laboratuvarı 1'),
-    (7,  2, '15:30:00', '17:30:00', 'Bilgisayar Laboratuvarı 1'),
-    (7,  3, '08:30:00', '10:30:00', 'Bilgisayar Laboratuvarı 1'),
+    (7,  1, '09:00:00', '11:00:00', 'Bilgisayar Laboratuvarı 1'),
+    (7,  1, '11:00:00', '13:00:00', 'Bilgisayar Laboratuvarı 1'),
     (8,  3, '10:30:00', '12:30:00', 'Bilgisayar Laboratuvarı 2'),
     (9,  4, '08:30:00', '12:30:00', 'Bilgisayar Laboratuvarı 2'),
     -- 2. sınıf
-    (10, 5, '08:30:00', '10:30:00', 'Bilgisayar Laboratuvarı 1'),
-    (11, 3, '13:30:00', '17:30:00', 'Bilgisayar Laboratuvarı 2'),
-    (12, 4, '15:30:00', '17:30:00', 'Bilgisayar Laboratuvarı 1'),
-    (13, 3, '10:30:00', '12:30:00', 'Bilgisayar Laboratuvarı 1'),
-    (13, 4, '13:30:00', '15:30:00', 'Bilgisayar Laboratuvarı 1'),
-    (14, 4, '08:30:00', '12:30:00', 'Bilgisayar Laboratuvarı 1'),
-    (15, 3, '08:30:00', '10:30:00', 'Konferans'),
-    (16, 2, '08:30:00', '10:30:00', 'Danışman Odası');
+    (11, 2, '13:30:00', '17:30:00', 'Bilgisayar Laboratuvarı 1'),
+    (14, 3, '09:00:00', '12:30:00', 'Bilgisayar Laboratuvarı 1'),
+    (12, 3, '13:30:00', '17:30:00', 'Bilgisayar Laboratuvarı 1'),
+    (10, 4, '09:00:00', '11:00:00', 'Bilgisayar Laboratuvarı 1'),
+    (10, 4, '11:00:00', '13:00:00', 'Bilgisayar Laboratuvarı 1'),
+    (15, 4, '14:30:00', '16:30:00', 'Derslik 6'),
+    (13, 5, '11:00:00', '13:00:00', 'Bilgisayar Laboratuvarı 2'),
+    (13, 5, '13:30:00', '15:30:00', 'Bilgisayar Laboratuvarı 2'),
+    (16, 5, '15:30:00', '17:30:00', 'Derslik 2');
 
 -- ---------------------------------------------------------------------
 -- Ders kayıtları
@@ -208,7 +209,7 @@ INSERT INTO duyurular (ders_acilis_id, yazar_id, baslik, icerik, onemli, yayin_t
      0, '2026-09-28 10:00:00'),
 
     (11, 3, 'Vize Sınavı Hakkında',
-     'NBP203 Veri Tabanı Uygulamaları vize sınavı 12 Kasım 2026 Perşembe günü 13:30''da Bilgisayar Laboratuvarı 2''de yapılacaktır. Sınav uygulamalıdır.',
+     'NMS239 Veri Tabanı Uygulamaları vize sınavı 12 Kasım 2026 Perşembe günü 13:30''da Bilgisayar Laboratuvarı 1''de yapılacaktır. Sınav uygulamalıdır.',
      1, '2026-11-02 16:20:00');
 
 -- ---------------------------------------------------------------------
@@ -341,16 +342,16 @@ INSERT INTO duyurular (id, ders_acilis_id, yazar_id, baslik, icerik, onemli, yay
      'Bilgisayar Donanımı ve Ağ dersinde 13 Kasım 2026 Cuma günü ilk 30 dakikada kısa sınav yapılacaktır. Konular: anakart, işlemci ve bellek türleri.',
      1, '2026-11-06 15:00:00'),
 
-    (11, 10, 4, 'NBP201 Proje Konuları Askıya Çıktı',
-     'Nesne Tabanlı Programlama dersi dönem projesi konuları panoya ve ders sayfasına eklenmiştir. Konu seçimini 14 Kasım''a kadar yapmanız gerekmektedir.',
+    (11, 10, 5, 'NMS265 Veri Kümesi Seçimi Başladı',
+     'Yapay Zeka dersi dönem projesi için kullanılacak veri kümeleri ders sayfasına eklenmiştir. Küme seçimini 14 Kasım''a kadar yapmanız gerekmektedir.',
      0, '2026-11-05 11:30:00'),
 
     (12, NULL, 1, 'Yemekhane Menüsü Güncellendi',
      'Kasım ayı yemekhane menüsü güncellenmiştir. Günlük menü ana sayfada ve Yemekhane sayfasında görüntülenebilir.',
      0, '2026-11-06 08:45:00'),
 
-    (13, 11, 3, 'NBP203 Telafi Dersi Yapılacaktır',
-     '12 Kasım Perşembe günü yapılacak vize sınavı nedeniyle iptal edilen dersin telafisi 21 Kasım 2026 Cumartesi 10:00''da Bilgisayar Laboratuvarı 2''de yapılacaktır.',
+    (13, 11, 3, 'NMS239 Telafi Dersi Yapılacaktır',
+     '12 Kasım Perşembe günü yapılacak vize sınavı nedeniyle iptal edilen dersin telafisi 21 Kasım 2026 Cumartesi 10:00''da Bilgisayar Laboratuvarı 1''de yapılacaktır.',
      0, '2026-11-06 16:10:00')
 ON DUPLICATE KEY UPDATE
     ders_acilis_id = VALUES(ders_acilis_id),
@@ -376,16 +377,16 @@ INSERT INTO odevler (id, ders_acilis_id, baslik, aciklama, son_teslim, maks_puan
      '10 bilgisayarlı bir laboratuvar için yıldız topolojisi çizin; IP adres planını ve kullanılan cihazları tablo halinde verin.',
      '2026-11-22 23:59:00', 100),
 
-    (8, 10, 'OOP ile Kütüphane Sistemi',
-     'Kitap, Uye ve Odunc sınıflarını içeren konsol uygulaması yazın. Kalıtım ve kapsülleme kullanılmalıdır.',
+    (8, 10, 'Yapay Zeka ile Sınıflandırma',
+     'Verilen veri kümesi üzerinde bir sınıflandırma modeli eğitin; doğruluk, kesinlik ve duyarlılık metriklerini raporlayın.',
      '2026-12-05 23:59:00', 100),
 
     (9, 11, 'JOIN Sorguları Uygulaması',
      'Verilen şema üzerinde 5 farklı JOIN sorgusu yazın; her sorgunun amacını birer cümleyle açıklayın.',
      '2026-11-19 23:59:00', 100),
 
-    (10, 12, 'Linux Kullanıcı Yönetimi',
-     'Sanal makinede 3 kullanıcı ve 2 grup oluşturun; dizin izinlerini ayarlayıp ekran görüntüleriyle raporlayın.',
+    (10, 12, 'PHP ile CRUD Uygulaması',
+     'PDO kullanarak ekleme, listeleme, güncelleme ve silme işlemleri yapan bir öğrenci kayıt uygulaması hazırlayın.',
      '2026-11-26 23:59:00', 100),
 
     (11, 13, 'Assembler Döngü Örneği',
@@ -438,33 +439,33 @@ INSERT INTO ders_icerikleri (ders_acilis_id, hafta, baslik, aciklama) VALUES
     (9, 6,  'IP adresleme',                'IPv4 sınıfları, alt ağ maskesi, özel adresler.'),
     (9, 7,  'Yönlendirme',                 'Router, switch, VLAN kavramları.'),
     (9, 8,  'Laboratuvar uygulaması',      'Kablo çakma, switch yapılandırma, test.'),
-    -- NBP201 Nesne Tabanlı Programlama
-    (10, 1, 'OOP''ye giriş',               'Nesne, sınıf, mesajlaşma kavramları.'),
-    (10, 2, 'Sınıf ve nesne',              'Yapıcı metot, alanlar, özellikler.'),
-    (10, 3, 'Kapsülleme',                  'Erişim belirleyiciler, get/set mantığı.'),
-    (10, 4, 'Kalıtım',                     'Temel sınıf, türetilmiş sınıf, override.'),
-    (10, 5, 'Çok biçimlilik',              'Sanal metotlar, arayüz kullanımı.'),
-    (10, 6, 'Arayüz ve soyut sınıf',       'Soyutlama, sözleşme tasarımı.'),
-    (10, 7, 'Koleksiyonlar',               'Liste, sözlük, küme ve yineleyiciler.'),
-    (10, 8, 'Proje planı',                 'Dönem projesi konularının belirlenmesi.'),
+    -- NMS265 Yapay Zeka
+    (10, 1, 'Yapay zekaya giriş',          'Temel kavramlar, tarihçe ve uygulama alanları.'),
+    (10, 2, 'Veri ve ön işleme',           'Veri kümeleri, eksik veri, ölçekleme ve normalizasyon.'),
+    (10, 3, 'Makine öğrenmesi temelleri',  'Gözetimli ve gözetimsiz öğrenme yaklaşımları.'),
+    (10, 4, 'Sınıflandırma',               'KNN, karar ağacı ve doğruluk ölçütleri.'),
+    (10, 5, 'Regresyon',                   'Doğrusal regresyon ve hata metrikleri.'),
+    (10, 6, 'Sinir ağlarına giriş',        'Perceptron, katmanlar ve aktivasyon fonksiyonları.'),
+    (10, 7, 'Görüntü işleme uygulamaları', 'Evrişimli ağlara giriş ve örnek uygulama.'),
+    (10, 8, 'Dönem projesi',               'Model seçimi, değerlendirme ve sunum.'),
 
-    -- NBP203 Veri Tabanı Uygulamaları
+    -- NMS239 Veri Tabanı Uygulamaları
     (11, 5, 'İndeksler',                   'İndeks türleri, performansa etkisi, EXPLAIN.'),
     (11, 6, 'Görünümler ve prosedürler',   'VIEW, STORED PROCEDURE, parametreler.'),
     (11, 7, 'Tetikleyiciler ve işlemler',  'TRIGGER, TRANSACTION, COMMIT / ROLLBACK.'),
     (11, 8, 'Performans ve yedekleme',     'Sorgu iyileştirme, mysqldump, geri yükleme.'),
 
-    -- NBP205 Sunucu İşletim Sistemleri
-    (12, 1, 'Sunucu işletim sistemleri',   'Windows Server ve Linux dağıtımları.'),
-    (12, 2, 'Linux kurulumu',              'Disk bölümleme, kullanıcı oluşturma, paket yönetimi.'),
-    (12, 3, 'Dosya sistemi',               'Kök dizin yapısı, bağlama noktaları.'),
-    (12, 4, 'Kullanıcı ve grup yönetimi',  'useradd, usermod, groupadd komutları.'),
-    (12, 5, 'Dosya izinleri',              'chmod, chown, umask, özel izinler.'),
-    (12, 6, 'Servis yönetimi',             'systemctl, log takibi, zamanlanmış görevler.'),
-    (12, 7, 'Ağ yapılandırması',           'Statik IP, DNS, hostname ayarları.'),
-    (12, 8, 'Güvenlik duvarı',             'ufw / firewalld kuralları ve testleri.'),
+    -- NMS269 Sunucu Tarafı Web Programlama
+    (12, 1, 'Web sunucu mimarisi',         'İstemci-sunucu modeli, HTTP ve portlar.'),
+    (12, 2, 'PHP temelleri',               'Değişkenler, form verisi ve yönlendirme.'),
+    (12, 3, 'Oturum ve çerezler',          'Session, cookie ve giriş akışı.'),
+    (12, 4, 'Veritabanı bağlantısı',       'PDO, prepared statement ve CRUD.'),
+    (12, 5, 'Dosya yükleme',               'Uzantı/MIME kontrolü ve güvenli yükleme.'),
+    (12, 6, 'REST API',                    'JSON, HTTP metotları ve durum kodları.'),
+    (12, 7, 'Kimlik doğrulama',            'Rol bazlı erişim ve token kullanımı.'),
+    (12, 8, 'Güvenlik ve yayınlama',       'XSS, CSRF, SQL enjeksiyonu ve dağıtım.'),
 
-    -- NBP207 Mikrobilgisayar ve Assembler
+    -- NMS227 Mikrobilgisayar ve Assembler
     (13, 1, 'Mikroişlemci mimarisi',       'ALU, kontrol birimi, veri yolu.'),
     (13, 2, 'Sayı sistemleri',             'İkilik, onaltılık, dönüşümler.'),
     (13, 3, 'Yazmaçlar',                   'Genel amaçlı ve özel yazmaçlar.'),
@@ -474,7 +475,27 @@ INSERT INTO ders_icerikleri (ders_acilis_id, hafta, baslik, aciklama) VALUES
     (13, 7, 'Kesmeler',                    'Donanım ve yazılım kesmeleri.'),
     (13, 8, 'Laboratuvar',                 'Simülatör üzerinde program çalıştırma.'),
 
-    -- NBP213 Dönem Projesi
+    -- NMS233 Görüntü İşlemenin Temelleri
+    (14, 1, 'Görüntü işlemeye giriş',      'Piksel, renk uzayları ve uygulama alanları.'),
+    (14, 2, 'Görüntü okuma ve yazma',      'OpenCV ile görüntü yükleme, formatlar ve boyutlandırma.'),
+    (14, 3, 'Temel filtreler',             'Bulanıklaştırma, keskinleştirme ve gürültü azaltma.'),
+    (14, 4, 'Histogram ve kontrast',       'Histogram eşitleme ve gamma düzeltmesi.'),
+    (14, 5, 'Kenar ve köşe algılama',      'Sobel, Canny ve Harris yöntemleri.'),
+    (14, 6, 'Morfolojik işlemler',         'Aşındırma, genişletme, açma ve kapama.'),
+    (14, 7, 'Segmentasyon',                'Eşikleme, kontur çıkarma ve bölütleme.'),
+    (14, 8, 'Mini proje',                  'Nesne sayma veya tanıma uygulaması.'),
+
+    -- NSS203 İşletme Yönetimi
+    (15, 1, 'İşletme ve yönetim',          'Temel kavramlar, amaçlar ve yönetim düzeyleri.'),
+    (15, 2, 'Yönetim fonksiyonları',       'Planlama, örgütleme, yöneltme ve denetim.'),
+    (15, 3, 'İşletmenin çevresi',          'İç ve dış çevre, paydaşlar ve belirsizlik.'),
+    (15, 4, 'Kuruluş yeri ve türleri',     'Şirket türleri ve kuruluş süreci.'),
+    (15, 5, 'Üretim yönetimi',             'Üretim planlama, kapasite ve verimlilik.'),
+    (15, 6, 'Pazarlama yönetimi',          'Pazar araştırması ve pazarlama karması.'),
+    (15, 7, 'İnsan kaynakları',            'İşe alım, performans ve motivasyon.'),
+    (15, 8, 'Finans ve maliyet',           'Bütçe, maliyet analizi ve kârlılık.'),
+
+    -- NBP253 Dönem Projesi
     (16, 1, 'Proje konuları',              'Konu havuzu ve seçim kriterleri.'),
     (16, 2, 'Gereksinim analizi',          'Kullanıcı hikâyeleri, kapsam belirleme.'),
     (16, 3, 'Tasarım',                     'Arayüz taslağı, akış diyagramı.'),

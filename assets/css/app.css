@@ -3475,3 +3475,90 @@ body.er-buyut-acik {
         color: #000;
     }
 }
+
+/* =====================================================================
+   Haftalık ders programı - yazdırma düzeni
+   ===================================================================== */
+
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    .sayfa-eylem {
+        display: none !important;
+    }
+
+    .sayfa-basligi.program-basligi {
+        display: none !important;
+    }
+
+    .program-gun .rozet {
+        display: none !important;
+    }
+
+    .program-ders .program-ad {
+        color: #222 !important;
+    }
+
+    .sayfa-basligi h1,
+    .sayfa-basligi p {
+        color: #000 !important;
+    }
+
+    .program-izgara {
+        display: block;
+    }
+
+    .program-gun {
+        min-height: 0;
+        margin-bottom: 10px;
+        padding: 10px 12px;
+        border: 1px solid #999;
+        border-radius: 0;
+        background: #fff;
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .program-gun.bugun {
+        border-color: #000;
+        box-shadow: none;
+    }
+
+    .program-gun header {
+        margin-bottom: 6px;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ccc;
+        color: #000;
+    }
+
+    .program-ders {
+        border: 1px solid #ddd;
+        border-radius: 0;
+        background: #fff;
+        color: #000;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .program-saat {
+        color: #000;
+    }
+
+    .program-yer,
+    .program-hoca {
+        color: #333;
+    }
+
+    .rozet {
+        border: 1px solid #666;
+        color: #000;
+    }
+
+    .panel-icerik {
+        padding: 0 !important;
+    }
+}

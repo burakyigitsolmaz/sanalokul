@@ -100,12 +100,15 @@ http://localhost/sanalokul/
 | Rol | E-posta | Şifre |
 |---|---|---|
 | Yönetici | `yonetici@ornek.local` | `Sanal1234!` |
-| Öğrenci (1. sınıf) | `burak.solmaz@ornek.local` | `Sanal1234!` |
-| Öğrenci (2. sınıf) | `deniz.yildiz@ornek.local` | `Sanal1234!` |
+| Öğrenci | `burak.solmaz@ornek.local` | `Sanal1234!` |
+| Öğrenci | `kaan.tokatli@ornek.local` | `Sanal1234!` |
 | Öğretim elemanı | `ayhan.aydin@ornek.local` | `Sanal1234!` |
 | Öğretim elemanı | `ufuk.tanyeri@ornek.local` | `Sanal1234!` |
+| Öğretim elemanı | `salih.erdurucan@ornek.local` | `Sanal1234!` |
+| Öğretim elemanı | `guney.ugurlu@ornek.local` | `Sanal1234!` |
 
-Tüm demo hesaplar `@ornek.local` adresini kullanır.
+Tüm demo hesaplar `@ornek.local` adresini kullanır. Giriş ekranındaki demo
+kartından bir hesaba tıklanınca e-posta ve şifre otomatik dolar.
 
 ---
 
@@ -290,15 +293,17 @@ C:\xampp\mysql\bin\mysql.exe -u root sanalokul < yedek.sql
 
 | Test | Beklenen |
 |---|---|
-| 60 PHP dosyası `php -l` | Sözdizimi temiz |
+| 62 PHP dosyası `php -l` | Sözdizimi temiz |
 | Giriş (3 rol) | Doğru panele yönlendirme |
 | Hatalı şifre × 5 | Hesap 15 dk kilitli |
 | Rol dışı erişim | 403 |
 | CSRF'siz POST | Reddedilir |
 | Not girişi | Ortalama/harf notu trigger ile güncellenir |
 | Derse kayıt | Kontenjan/çakışma kontrolü çalışır |
-| Rapor ekranı | Dönem 3: 11 ders, %75 başarı, 2 riskli öğrenci |
+| Rapor ekranı | Dönem 3: 11 ders, %64,3 başarı, 2 riskli öğrenci |
 | CSV indirme | UTF-8 BOM, `;` ayırıcı, Türkçe karakterler doğru |
+| Ders programı yazdırma | Menü ve düğmeler gizli, beyaz zemin, günler bölünmeden |
+| Takvime ekle (.ics) | 9 etkinlik, haftalık `RRULE`, UTC saatler doğru |
 | Yedek betiği | `.sql.gz` oluşur, tablo/view/trigger/prosedür sayıları doğru |
 | Mobil 360–390 px | Yatay taşma yok |
 | Güvenlik başlıkları | CSP + X-Frame-Options + nosniff + HSTS (HTTPS'te) |
@@ -314,8 +319,8 @@ sanalokul/
 ├── ogretmen/         Öğretim elemanı paneli sayfaları
 ├── assets/           CSS, JS, görseller
 ├── config/           config.php + config.local.php (gizli)
-├── database/         00–08 SQL dosyaları
-├── docs/             ILERLEME.md, TESLIM.md, ekran görüntüleri
+├── database/         00–05 SQL dosyaları
+├── docs/             TESLIM.md, er-diyagram.png, ekran görüntüleri
 ├── scripts/          yedekle.php (CLI)
 ├── src/              Auth, Database, Guvenlik, Ogrenci, Ogretmen, Yonetici, Rapor, Senkron
 ├── templates/        Ortak üst/alt şablonlar

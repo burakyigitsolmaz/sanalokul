@@ -35,6 +35,3 @@ FLUSH PRIVILEGES;
 --   mysql -u root sanalokul < database/03_triggers.sql
 --   mysql -u root sanalokul < database/04_procedures.sql
 --   mysql -u root sanalokul < database/05_seed.sql
---   mysql -u root sanalokul < database/06_seed_faz3.sql
---   mysql -u root sanalokul < database/07_rapor.sql
---   mysql -u root sanalokul < database/08_performans.sql

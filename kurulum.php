@@ -43,7 +43,6 @@ $klasorler = [
     'config'   => is_dir(__DIR__ . '/config'),
     'src'      => is_dir(__DIR__ . '/src'),
     'database' => is_dir(__DIR__ . '/database'),
-    'cron'     => is_dir(__DIR__ . '/cron'),
     'uploads'  => is_dir(__DIR__ . '/uploads') && is_writable(__DIR__ . '/uploads'),
     'docs'     => is_dir(__DIR__ . '/docs'),
 ];

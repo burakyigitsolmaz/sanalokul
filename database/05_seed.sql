@@ -233,14 +233,6 @@ INSERT INTO odevler (id, ders_acilis_id, baslik, aciklama, son_teslim, maks_puan
      '2026-11-18 23:59:00', 100);
 
 -- ---------------------------------------------------------------------
--- Teslimler (demo dosya yolları; gerçek dosya bulunmayabilir)
--- ---------------------------------------------------------------------
-INSERT INTO teslimler (odev_id, ogrenci_id, dosya_yolu, aciklama, teslim_zamani, puan, geri_bildirim, degerlendirme_zamani) VALUES
-    (1, 6, 'uploads/demo/burak_odev1.pdf', 'Akış diyagramını da ekledim.', '2026-11-12 21:40:00', 95, 'Temiz kod, değişken isimleri anlaşılır. Akış diyagramında bir karar kutusu eksik.', '2026-11-13 10:00:00'),
-    (1, 7, 'uploads/demo/kaan_odev1.pdf', 'İşlem türleri menü ile seçiliyor.', '2026-11-14 23:10:00', NULL, NULL, NULL),
-    (3, 6, 'uploads/demo/burak_logo.png', 'Logo tasarımı ve kaynak dosya.', '2026-11-09 18:20:00', 85, 'Renk paleti iyi, tipografi biraz zayıf.', '2026-11-10 11:00:00');
-
--- ---------------------------------------------------------------------
 -- Ders içerikleri
 -- ---------------------------------------------------------------------
 INSERT INTO ders_icerikleri (ders_acilis_id, hafta, baslik, aciklama) VALUES
@@ -508,15 +500,3 @@ ON DUPLICATE KEY UPDATE
     baslik = VALUES(baslik),
     aciklama = VALUES(aciklama);
 
--- ---------------------------------------------------------------------
--- 5. Teslimler (demo)
--- ---------------------------------------------------------------------
-INSERT INTO teslimler (odev_id, ogrenci_id, dosya_yolu, aciklama, teslim_zamani, puan, geri_bildirim, degerlendirme_zamani) VALUES
-    (5, 6, 'uploads/demo/burak_carpim.pdf', 'İç içe döngü kullandım.', '2026-11-07 10:15:00', NULL, NULL, NULL)
-ON DUPLICATE KEY UPDATE
-    dosya_yolu = VALUES(dosya_yolu),
-    aciklama = VALUES(aciklama),
-    teslim_zamani = VALUES(teslim_zamani),
-    puan = VALUES(puan),
-    geri_bildirim = VALUES(geri_bildirim),
-    degerlendirme_zamani = VALUES(degerlendirme_zamani);
